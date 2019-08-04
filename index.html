@@ -39,9 +39,9 @@
       function theyAreMarried(s1, s2) {
         return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
       }
-      
+
       myDiagram.addDiagramListener("ObjectSingleClicked",
-        function(e) {
+        function(e) { 
           var part = e.subject.part;
           var head = "";
           var msg = "";

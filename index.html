@@ -61,7 +61,16 @@
             }
           }
           showMessage(head, msg);
-      });    //   // determine the color for each attribute shape
+
+      }); 
+      
+      myDiagram.addDiagramListener("BackgroundSingleClicked",
+        function(e) {
+          showMessage("", "");
+      }); 
+
+
+      //   // determine the color for each attribute shape
       // determine the geometry for each attribute shape;
       // squares at each of the four corners of the overall square
       var tlsq = go.Geometry.parse("F M1 1 l19 0 0 19 -19 0z");

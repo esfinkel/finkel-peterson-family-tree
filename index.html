@@ -64,10 +64,23 @@
 
       }); 
       
+      // allow message to disappear when item is deselected 
       myDiagram.addDiagramListener("BackgroundSingleClicked",
         function(e) {
           showMessage("", "");
       }); 
+      myDiagram.addDiagramListener("BackgroundDoubleClicked",
+        function(e) {
+          showMessage("", "");
+      }); 
+      myDiagram.addDiagramListener("BackgroundContextClicked",
+        function(e) {
+          showMessage("", "");
+      }); 
+
+
+      
+      
 
 
       //   // determine the color for each attribute shape

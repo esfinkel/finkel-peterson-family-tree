@@ -10,32 +10,78 @@
   <script src="go.js"></script>
   <script id="code">
 
-  function showMessage(h, m) {
-      document.getElementById("diagramEventsMsgHeader").textContent = h;
-      document.getElementById("diagramEventsMsgMsg").textContent = m;
-    }
+    marriagesInfo = [{sA: -10, sB: -11, info: "married in 1900"}];
+
+    familyInfo = [
+        { key: 0, n: "Aaron", s: "M", m: -10, f: -11, ux: 1 , info: "Lived in Omaha"},
+        { key: 1, n: "Alice", s: "F", m: -12, f: -13 },
+        { key: 2, n: "Bob", s: "M", m: 1, f: 0, ux: 3 },
+        { key: 3, n: "Barbara", s: "F" },
+        { key: 4, n: "Bill", s: "M", m: 1, f: 0, ux: 5 },
+        { key: 5, n: "Brooke", s: "F" },
+        { key: 6, n: "Claire", s: "F", m: 1, f: 0 },
+        { key: 7, n: "Carol", s: "F", m: 1, f: 0 },
+        { key: 8, n: "Chloe", s: "F", m: 1, f: 0, ux: 9 },
+        { key: 9, n: "Chris", s: "M" },
+        { key: 10, n: "Ellie", s: "F", m: 3, f: 2 },
+        { key: 11, n: "Dan", s: "M", m: 3, f: 2 },
+        { key: 12, n: "Elizabeth", s: "F", ux: 13 },
+        { key: 13, n: "Davida", s: "F", m: 5, f: 4 },
+        { key: 14, n: "Emma", s: "F", m: 5, f: 4 },
+        { key: 15, n: "Evan", s: "M", p1: 8, p2: 9 },
+        { key: 16, n: "Ethan", s: "X", m: 8, f: 9 },
+        { key: 17, n: "Eve", s: "F", ux: 16 },
+        { key: 18, n: "Emily", s: "F", m: 8, f: 9 },
+        { key: 19, n: "Fred", s: "M", m: 17, f: 16 },
+        { key: 20, n: "Faith", s: "F", m: 17, f: 16 },
+        { key: 21, n: "Felicia", s: "F", m: 12, f: 13 },
+        { key: 22, n: "Frank", s: "M", m: 12, f: 13 },
+        // "Aaron"'s ancestors
+        { key: -10, n: "Paternal Grandfather", s: "M", m: -33, f: -32, ux: -11 },
+        { key: -11, n: "Paternal Grandmother", s: "F" },
+        { key: -32, n: "Paternal Great", s: "M", ux: -33 },
+        { key: -33, n: "Paternal Great", s: "F" },
+        { key: -40, n: "Great Uncle", s: "M", m: -33, f: -32 },
+        { key: -41, n: "Great Aunt", s: "F", m: -33, f: -32 },
+        { key: -20, n: "Uncle", s: "M", m: -11, f: -10 },
+        // "Alice"'s ancestors
+        { key: -12, n: "Maternal Grandfather", s: "M", ux: -13 },
+        { key: -13, n: "Maternal Grandmother", s: "F", m: -31, f: -30 },
+        { key: -21, n: "Aunt", s: "F", m: -13, f: -12 },
+        { key: -50, n: "Second husband", s: "M", ux: -21},
+        { key: -22, n: "First husband", s: "M", ux: -21 },
+        { key: -23, n: "Cousin", s: "M", m: -21, f: -22 },
+        { key: -30, n: "Maternal Great", s: "M", ux: -31 },
+        { key: -31, n: "Maternal Great", s: "F" },
+        { key: -42, n: "Great Uncle", s: "M", m: -30, f: -31 },
+        { key: -43, n: "Great Aunt", s: "F", m: -30, f: -31 }
+    ];
 
 
-
+    
     function init() {
       var $ = go.GraphObject.make;
       myDiagram =
-        $(go.Diagram, "myDiagramDiv",
-          {
-            initialAutoScale: go.Diagram.Uniform,
-            "undoManager.isEnabled": true,
-            // when a node is selected, draw a big yellow circle behind it  // handle clicking/highlighting
-            nodeSelectionAdornmentTemplate:
-              $(go.Adornment, "Auto",
-                { layerName: "Grid" },  // the predefined layer that is behind everything else
-                $(go.Shape, "Circle", { fill: "yellow", stroke: null }),
-                $(go.Placeholder)
-              ),
-            layout:  // use a custom layout, defined below
-              $(GenogramLayout, { direction: 90, layerSpacing: 30, columnSpacing: 10 })
-          });
-
-
+      $(go.Diagram, "myDiagramDiv",
+      {
+        initialAutoScale: go.Diagram.Uniform,
+        "undoManager.isEnabled": true,
+        // when a node is selected, draw a big yellow circle behind it  // handle clicking/highlighting
+        nodeSelectionAdornmentTemplate:
+        $(go.Adornment, "Auto",
+        { layerName: "Grid" },  // the predefined layer that is behind everything else
+        $(go.Shape, "Circle", { fill: "yellow", stroke: null }),
+        $(go.Placeholder)
+        ),
+        layout:  // use a custom layout, defined below
+        $(GenogramLayout, { direction: 90, layerSpacing: 30, columnSpacing: 10 })
+      });
+      
+      function showMessage(h, m) {
+        document.getElementById("diagramEventsMsgHeader").textContent = h;
+        document.getElementById("diagramEventsMsgMsg").textContent = m;
+      }
+      
       function theyAreMarried(s1, s2) {
         return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
       }
@@ -53,11 +99,11 @@
 
             if (theyAreMarried(from, to)) {
               const arr1 = marriagesInfo.filter(d => (d.sA==from.key && d.sB==to.key) || (d.sB==from.key && d.sA==to.key));
-              head = "Info for marriage between "+from.n+" and "+to.n+":";
               if (arr1.length==1) {
+                head = "Info for marriage between "+from.n+" and "+to.n+":";
                 msg = arr1[0].info;
               } else if (arr1.length==0) {
-                msg = "No additional info for this marriage";
+                msg = "No additional info for marriage between "+from.n+" and "+to.n+".";
               } else {
                 msg = "Err: multiple matching marriages";
               }
@@ -212,56 +258,8 @@
         ));
       // n: name, s: gender, m: mother, f: father, p1: parent1, p2: parent2, ux: spouse, a: attributes/markers
 
-      familyInfo = [
-        { key: 0, n: "Aaron", s: "M", m: -10, f: -11, ux: 1 , info: "Lived in Omaha"},
-        { key: 1, n: "Alice", s: "F", m: -12, f: -13 },
-        { key: 2, n: "Bob", s: "M", m: 1, f: 0, ux: 3 },
-        { key: 3, n: "Barbara", s: "F" },
-        { key: 4, n: "Bill", s: "M", m: 1, f: 0, ux: 5 },
-        { key: 5, n: "Brooke", s: "F" },
-        { key: 6, n: "Claire", s: "F", m: 1, f: 0 },
-        { key: 7, n: "Carol", s: "F", m: 1, f: 0 },
-        { key: 8, n: "Chloe", s: "F", m: 1, f: 0, ux: 9 },
-        { key: 9, n: "Chris", s: "M" },
-        { key: 10, n: "Ellie", s: "F", m: 3, f: 2 },
-        { key: 11, n: "Dan", s: "M", m: 3, f: 2 },
-        { key: 12, n: "Elizabeth", s: "F", ux: 13 },
-        { key: 13, n: "Davida", s: "F", m: 5, f: 4 },
-        { key: 14, n: "Emma", s: "F", m: 5, f: 4 },
-        { key: 15, n: "Evan", s: "M", p1: 8, p2: 9 },
-        { key: 16, n: "Ethan", s: "X", m: 8, f: 9 },
-        { key: 17, n: "Eve", s: "F", ux: 16 },
-        { key: 18, n: "Emily", s: "F", m: 8, f: 9 },
-        { key: 19, n: "Fred", s: "M", m: 17, f: 16 },
-        { key: 20, n: "Faith", s: "F", m: 17, f: 16 },
-        { key: 21, n: "Felicia", s: "F", m: 12, f: 13 },
-        { key: 22, n: "Frank", s: "M", m: 12, f: 13 },
-        // "Aaron"'s ancestors
-        { key: -10, n: "Paternal Grandfather", s: "M", m: -33, f: -32, ux: -11 },
-        { key: -11, n: "Paternal Grandmother", s: "F" },
-        { key: -32, n: "Paternal Great", s: "M", ux: -33 },
-        { key: -33, n: "Paternal Great", s: "F" },
-        { key: -40, n: "Great Uncle", s: "M", m: -33, f: -32 },
-        { key: -41, n: "Great Aunt", s: "F", m: -33, f: -32 },
-        { key: -20, n: "Uncle", s: "M", m: -11, f: -10 },
-        // "Alice"'s ancestors
-        { key: -12, n: "Maternal Grandfather", s: "M", ux: -13 },
-        { key: -13, n: "Maternal Grandmother", s: "F", m: -31, f: -30 },
-        { key: -21, n: "Aunt", s: "F", m: -13, f: -12 },
-        { key: -50, n: "Second husband", s: "M", ux: -21},
-        { key: -22, n: "First husband", s: "M", ux: -21 },
-        { key: -23, n: "Cousin", s: "M", m: -21, f: -22 },
-        { key: -30, n: "Maternal Great", s: "M", ux: -31 },
-        { key: -31, n: "Maternal Great", s: "F" },
-        { key: -42, n: "Great Uncle", s: "M", m: -30, f: -31 },
-        { key: -43, n: "Great Aunt", s: "F", m: -30, f: -31 }
-      ];
-
       setupDiagram(myDiagram, familyInfo, 4 /* focus on this person */);
     }
-
-    marriagesInfo = [{sA: -10, sB: -11, info: "married in 1900"}];
-    // marriagesInfo = {"-10": {info: "married in 1900"}};
     
     // create and initialize the Diagram.model given an array of node data representing people
     function setupDiagram(diagram, array, focusId) {
@@ -278,10 +276,10 @@
           });
       setupMarriages(diagram);
       setupParents(diagram);
-      var node = diagram.findNodeForKey(focusId);
-      if (node !== null) {                                  
-        diagram.select(node);
-      }
+      // var node = diagram.findNodeForKey(focusId);  // autoselect a node upon load
+      // if (node !== null) {                                  
+      //   diagram.select(node);
+      // }
     }
     function findMarriage(diagram, a, b) {  // A and B are node keys
       var nodeA = diagram.findNodeForKey(a);

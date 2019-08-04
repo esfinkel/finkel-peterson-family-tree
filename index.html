@@ -35,33 +35,46 @@
               $(GenogramLayout, { direction: 90, layerSpacing: 30, columnSpacing: 10 })
           });
 
+
+      function theyAreMarried(s1, s2) {
+        return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
+      }
+      
       myDiagram.addDiagramListener("ObjectSingleClicked",
         function(e) {
           var part = e.subject.part;
-          var head;
-          var msg;
+          var head = "";
+          var msg = "";
+
           if (part instanceof go.Link) {
-            head = "";
-            msg = "Marriage info not currently supported."
-            // if (marriages.hasOwnProperty(part.data.key.toString())) {
-            //   head = "Marriage info:"
-            //   msg = marriagesInfo[part.data.key.toString()];   // Object.keys(go.Link)
-            // }
-            // else {
-            //   head = "";
-            //   msg = "No additional info for this marriage";
-            // }
-          } else {
+            const pair = familyInfo.filter(d => d.key==part.fromNode.key || d.key==part.toNode.key);
+            var from = pair[0];
+            var to = pair[1];
+
+            if (theyAreMarried(from, to)) {
+              const arr1 = marriagesInfo.filter(d => (d.sA==from.key && d.sB==to.key) || (d.sB==from.key && d.sA==to.key));
+              head = "Info for marriage between "+from.n+" and "+to.n+":";
+              if (arr1.length==1) {
+                msg = arr1[0].info;
+              } else if (arr1.length==0) {
+                msg = "No additional info for this marriage";
+              } else {
+                msg = "Err: multiple matching marriages";
+              }
+            }
+          }
+
+          else { // if node
             if (part.data.hasOwnProperty("info")) {
               head = "Info:";
               msg = part.data.info;
             } else {
-              head = "";
               msg = "No additional info on this person.";
             }
           }
-          showMessage(head, msg);
 
+          showMessage(head, msg);
+        
       }); 
       
       // allow message to disappear when item is deselected 
@@ -191,11 +204,15 @@
         );
       myDiagram.linkTemplateMap.add("Marriage",  // for marriage relationships
         $(go.Link,
-          { selectable: true },
+          {
+            selectable: true
+            // ,routing: go.Link.AvoidsNodes
+          },
           $(go.Shape, { strokeWidth: 2, stroke: "blue" })
         ));
       // n: name, s: gender, m: mother, f: father, p1: parent1, p2: parent2, ux: spouse, a: attributes/markers
-      setupDiagram(myDiagram, [
+
+      familyInfo = [
         { key: 0, n: "Aaron", s: "M", m: -10, f: -11, ux: 1 , info: "Lived in Omaha"},
         { key: 1, n: "Alice", s: "F", m: -12, f: -13 },
         { key: 2, n: "Bob", s: "M", m: 1, f: 0, ux: 3 },
@@ -238,13 +255,13 @@
         { key: -31, n: "Maternal Great", s: "F" },
         { key: -42, n: "Great Uncle", s: "M", m: -30, f: -31 },
         { key: -43, n: "Great Aunt", s: "F", m: -30, f: -31 }
-      ],
+      ];
 
-      4 /* focus on this person */);
+      setupDiagram(myDiagram, familyInfo, 4 /* focus on this person */);
     }
 
-    // marriagesInfo = {key: -10, info: "married in 1900"};
-    marriagesInfo = {"-10": {info: "married in 1900"}};
+    marriagesInfo = [{sA: -10, sB: -11, info: "married in 1900"}];
+    // marriagesInfo = {"-10": {info: "married in 1900"}};
     
     // create and initialize the Diagram.model given an array of node data representing people
     function setupDiagram(diagram, array, focusId) {

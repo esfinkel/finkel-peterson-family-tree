@@ -12,6 +12,13 @@
 
     marriagesInfo = [{sA: -10, sB: -11, info: "married in 1900"}];
 
+    // key needs to be different number for each person
+    // n = name (must be in double quotes)
+    // s (sex/gender) is either "M" or "F"
+    // p1 is parent1 (should be that person's key)
+    // p2 is parent2
+    // ux is spouse's key
+    // n: name, s: gender, m: mother, f: father, p1: parent1, p2: parent2, ux: spouse, a: attributes/markers
     familyInfo = [
         { key: 0, n: "Aaron", s: "M", m: -10, f: -11, ux: 1 , info: "Lived in Omaha"},
         { key: 1, n: "Alice", s: "F", m: -12, f: -13 },
@@ -139,12 +146,8 @@
 
 
       
-      
 
-
-      //   // determine the color for each attribute shape
-      // determine the geometry for each attribute shape;
-      // squares at each of the four corners of the overall square
+      //   // determine the color/geometry for each attribute shape
       var tlsq = go.Geometry.parse("F M1 1 l19 0 0 19 -19 0z");
       function maleGeometry(a) {
         return tlsq;
@@ -256,7 +259,6 @@
           },
           $(go.Shape, { strokeWidth: 2, stroke: "blue" })
         ));
-      // n: name, s: gender, m: mother, f: father, p1: parent1, p2: parent2, ux: spouse, a: attributes/markers
 
       setupDiagram(myDiagram, familyInfo, 4 /* focus on this person */);
     }

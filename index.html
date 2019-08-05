@@ -56,13 +56,13 @@
 //Patyk Family
 
 {key: 19, n: "Gary" , s: "M", p1: 20, p2: 21, ux: 16 },
-{key: 20, n: "Gean", s: "F", ux: 21 },
+{key: 20, n: "Jean", s: "F", ux: 21 },
 {key: 21, n: "???(Patyk)", s: "M", ux: 20 },
 
 //Finkel(Richman)
 
-{key: 22, n: "Fran", s: "F", p1: -1, ux:23, info: "Lives in Pennsylvania" },
-{key: 23, n: "Larry", s: "M", ux: 22 },
+{key: 22, n: "Fran", s: "F", p1: -1, p2: -28, ux:23, info: "Lives in Pennsylvania" },
+{key: 23, n: "Larry", s: "M", p1: 38, p2: -33, ux: 22 },
 
 //Manthey
 
@@ -77,12 +77,12 @@
 // Peterson
 
 { key: 28,  n: "Rosalind", s: "F", ux: 29, info: "Lives in Illinois" },
-{ key: 29, n: "Dave Sr.", s: "M", ux: 28, info: "Lives in Illinois" },
+{ key: 29, n: "Dave Sr.", s: "M", p1: -37, p2: -38, ux: 28, info: "Lives in Illinois" },
 
 //Hunn
 
-{ key: 30, n: "Ellen", s: "F", ux: 31 },
-{ key: 31, n: "Ken Hunn", s: "M", ux: 30 },
+{ key: 30, n: "Ellen", s: "F", p1: 38, p2: -33, ux: 31 },
+{ key: 31, n: "Ken Hunn", s: "M", ux: 30},
 { key: 32, n: "Brian", s: "M", p1: 30, p2: 31, ux: 33 },
 { key: 33, n: "Nicole", s: "F", ux: 32 },
 { key: "32a", n: "Bailey", s: "M", p1: 32, p2: 33 },
@@ -91,20 +91,45 @@
 { key: 34, n: "Eric", s: "M", p1: 30, p2: 31, ux: 35 },
 { key: 35, n: "Penny", s: "F", ux: 34 },
 { key: "37a", n: "Ethan", s: "M", p1: 34, p2: 35 },
-{ key: "37b", n: "Lexi", s: "F", p1: 34, p2: 36 },
+{ key: "37b", n: "Lexi", s: "F", p1: 34, p2: 35 },
 { key: 37, n: "Matthew", s: "M", p1: 30, p2: 31 },
 
 //Finkel
 
-{ key: 38, n: "Samuel", s: "M" },
-{ key: 39, n: "Cele Shulman", s: "F" },
-
-
+{ key: 38, n: "Samuel", s: "M", p1: 47, p2: 48 },
+{ key: 39, n: "Cele Shulman", s: "F", ux: 38 },
+{ key: 46, n: "Evelyn Kabatznick", s: "F", ux: 38 },
+{ key: 47, n: "Max Finkel", s: "M", ux: 36 },
+{ key: 36, n: "Yetta", s: "F", ux: 47 },
+{ key: "47a", n: "Solomon?", s: "M", p1: 47, p2: 48 },
+{ key: "47b", n: "Ethel", s: "F", p1: 47, p2: 48 },
+{ key: "47ba", n: "Lou Brandow", s: "M", ux: "47b" },
+{ key: "47bb", n: "David Trusell", s: "M", ux: "47b" },
+{ key: "47bc", n: "Jack", s: "M", p1: "47b", p2: "47bb" },
 
 //Brody
 
+{ key: 40, n: "Martha", s: "F", p1: 38, p2: 39, ux: 41 }, 
+{ key: 41, n: "Arthur Brody", s: "M", ux: 40 },
+{ key: 42, n: "Carl", s: "M", p1: 40, p2: 41, ux: 43 },
+{ key: 43, n: "Becky", s: "F", ux: 42 },
+	{ key: "42a", n: "Jill", s: "F", p1: 42, p2: 43 },
+	{ key: "42b", n: "Robin", s: "F", p1: 42, p2: 43 },
+{ key: 44, n: "Elissa", s: "F", p1: 40, p2: 41 },
+{ key: 45, n: "Thomas", s: "M", p1: 44 },
 
+//Slotkin(sub)
 
+{ key: 48, n: "Evelyn", s: "F", p1: -34, p2: -35, ux: 49 },
+{ key: 49, n: "Jack Rosen", s: "M", ux: 48 },
+	{ key: "48a", s: "M", n: "Stanley", p1: 48, p2: 49 },
+{ key: 50, n: "Sam", s: "M", p1: -34, p2: -35, ux: 51 },
+{ key: 51, n: "Pauline", s: "F", ux: 50 }, 
+	{ key: "50a", n: "Barry", s: "M", p1: 50, p2: 51 },
+{ key: 52, n: "Marica", s: "F", p1: -34, p2: -35, ux: 53 },
+{ key: 53, n: "Sam Skolnick", s: "M", ux: 52 },
+{ key: "52a", n: "Jay", s: "M", p1: 52, p2: 53 },
+{ key: "52b", n: "Harriet", s: "F", p1: 52, p2: 53 },
 
 
 //Richman family
@@ -156,6 +181,8 @@
 { key: -26, n: "Sam", s: "M", p1: -8, p2: -9, ux: "-26s" },
 { key: "-26s", n: "Beatrice", s: "F", ux: -26 },
 { key: "-26b", n: "Hank; Cele; possibly two others", s: "X", p1: -26, p2: "-26s" },
+
+
 { key: -27, n: "Charles", s: "M", p1: -8, p2: -9 },
 
 
@@ -165,7 +192,7 @@
 { key: "?1a", n: "", s: "X", ux: "?1b" },
 { key: "?1b", n: "", s: "X", ux: "?1a" },	
 { key: -31, n: "Nathan", s: "M", p1: "?1a", p2: "?1b", ux: "-31s" },
-{ key: "-31s", n: "", s: "M", ux: -31 },
+{ key: "-31s", n: "", s: "F", ux: -31 },
 	{ key: "-31b", n: "Jake", s: "M", p1: -31, p2: "-31s" },
 { key: -32, n: "Harry", s: "M",  p1: "?1a", p2: "?1b" },
 { key: -29, n: "Joseph Shur", s: "M", p1: "?1a", p2: "?1b", ux: -30, info: "" },
@@ -175,16 +202,46 @@
 { key: "-28a", n: "Harry", s: "M", p1: -29, p2: -30, ux: "-28as" },
 { key: "-28as", n: "Rose", s: "F", ux: "-28a" },
 { key: "-28aa", n: "Sharon & Stanley", s: "X", p1: "-28a", p2: "-28as" },
-{ key: "-28b", n: "Rose", s: "F", p1: -29, p2: -39, ux: "-28bs" },
+{ key: "-28b", n: "Rose", s: "F", p1: -29, p2: -30, ux: "-28bs" },
 { key: "-28bs", n: "Harry Olin", s: "M", ux: "-28b" },
 { key: "-28ba", n: "Marilyn, Alan, Gerry", s: "X", p1: "-28b", p2: "-28bs" },
-{ key: "-28c", n: "Fanny", s: "F", p1: -29, p2: -39, ux: "-28cs" },
+{ key: "-28c", n: "Fanny", s: "F", p1: -29, p2: -30, ux: "-28cs" },
 { key: "-28cs", n: "Ben Jones", s: "M", ux: "-28c" },
 { key: "-28cc", n: "Donald", s: "M", p1: "-28c", p2: "-28cs" },
-{ key: "-28d", n: "Edith", s: "F", p1: -29, p2: -39, ux: "-28ds" },
+{ key: "-28d", n: "Edith", s: "F", p1: -29, p2: -30, ux: "-28ds" },
 { key: "-28ds", n: "Victor Powell", s: "M", ux: "-28d" },
 { key: "-28da", n: "Nina", s: "F", p1: "-28d", p2: "-28ds" },
-{ key: "-28db", n: "Eric", s: "M", p1: "-28d", p2: "-28ds" }
+{ key: "-28db", n: "Eric", s: "M", p1: "-28d", p2: "-28ds" },
+
+
+
+
+// Slotkin family
+
+// Slotkin family immigrated from Vitebsk in 1906
+{ key: "?2a", n: "?", s: "X", ux: "?2b", info: "Slotkin family immigrated from Vitebsk in 1906" },
+{ key: "?2b", n: "?", s: "X", ux: "?2a", info: "Slotkin family immigrated from Vitebsk in 1906" },
+{ key: -33, n: "Edythe Slotkin", s: "F", p1: -34, p2: -35, ux: 38, info: "married 1935" },
+// Edythe married 1935
+{ key: -34, n: "David Slotkin", s: "M", p1: "?2a", p2: "?2b", ux: -35 },
+{ key: -35, n: "Leah Pearlstein", s: "F", ux: -34, info: "'probably born in Vitebsk, married and came here in 1906' - fran" },
+// david and leah "married and came here in 1906" - fran
+{ key: "-36a", n: "Max", s: "M", p1: "?2a", p2: "?2b", ux: "-36as" },
+{ key: "-36as", n: "Frieda", s: "F", ux: "-36a" },
+{ key: "-36ab", n: "Herman, Sam, Sol, Celia, Ester", s: "X", p1: "-36a", p2: "-36as" },
+{ key: "-36b", n: "Cy", s: "M", p1: "?2a", p2: "?2b", ux: "-36bs" },
+	{ key: "-36bs", n: "?", s: "F", ux: "-36b" },
+{ key: "-36bb", n: "Lillian", s: "F", p1: "-36b", p2: "-36bs", ux: "-36bbs" },
+	{ key: "-36bbs", n: "Bennet", s: "M", ux: "-36bb" },
+	{ key: "-36bbb", n: "Valerie", s: "F", p1: "-36bb", p2: "-36bbs" },
+	{ key: "-36bbc", n: "Stephanie", s: "F", p1: "-36bb", p2: "-36bbs" },
+{ key: "-36bc", n: "Bennet", s: "M", p1: "-36b", p2: "-36bs" },
+
+
+
+// Peterson/Walker family
+{ key: -37, n: "Trellis Peterson", s: "M", ux: -38, info: "'Was from Kansas... Supervisor for Silver Cup Bread... Worked for Holsum Bread... Painted the insides of people's homes to support his family' -R Peterson" },
+{ key: -38, n: "Lillian Walker", s: "F", ux: -37 },
 
 
 
@@ -416,7 +473,7 @@
             selectable: true
             // ,routing: go.Link.AvoidsNodes
           },
-          $(go.Shape, { strokeWidth: 2, stroke: "blue" })
+          $(go.Shape, { strokeWidth: 10, stroke: "blue" })
         ));
 
       setupDiagram(myDiagram, familyInfo, 4 /* focus on this person */);
@@ -738,7 +795,7 @@
 </head>
 <body onload="init()">
 <div id="sample">
-  <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:600px"></div>
+  <div id="myDiagramDiv" style="border: solid 2px black; width:100%; height:800px"></div>
   <div id="diagramEventsMsg">
     <strong><p id = "diagramEventsMsgHeader" style></p></strong>
     <p id = "diagramEventsMsgMsg"></p>

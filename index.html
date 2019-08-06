@@ -10,7 +10,7 @@
   <script src="go.js"></script>
   <script id="code">
 
-    marriagesInfo = [{sA: -100, sB: -110, info: "married in 1900"}];
+    marriagesInfo = [{sA: 2, sB: 3, info: "married in 1900"}];
 
     // key needs to be different number for each person
     // n = name (must be in double quotes)
@@ -256,7 +256,7 @@
 
 
     
-    function init() {
+function init() {
       var $ = go.GraphObject.make;
       myDiagram =
       $(go.Diagram, "myDiagramDiv",
@@ -271,9 +271,13 @@
         $(go.Placeholder)
         ),
         layout:  // use a custom layout, defined below
-        $(GenogramLayout, { direction: 90, layerSpacing: 30, columnSpacing: 10 })
+        $(GenogramLayout, { direction: 90, layerSpacing: 30, columnSpacing: 10, aggressiveOption: go.LayeredDigraphLayout.AggressiveMore, layeringOption: go.LayeredDigraphLayout.LayerOptimalLinkLength}) // last 2 don't seem to do anything
       });
       
+
+
+
+
       function showMessage(h, m) {
         document.getElementById("diagramEventsMsgHeader").textContent = h;
         document.getElementById("diagramEventsMsgMsg").textContent = m;
@@ -283,27 +287,25 @@
         return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
       }
 
+
       myDiagram.addDiagramListener("ObjectSingleClicked",
         function(e) { 
           var part = e.subject.part;
+
           var head = "";
           var msg = "";
 
           if (part instanceof go.Link) {
             const pair = familyInfo.filter(d => d.key==part.fromNode.key || d.key==part.toNode.key);
             var from = pair[0];
-            var to = pair[1];
-
+            var to = pair[1];            
             if (theyAreMarried(from, to)) {
-              const arr1 = marriagesInfo.filter(d => (d.sA==from.key && d.sB==to.key) || (d.sB==from.key && d.sA==to.key));
-              if (arr1.length==1) {
-                head = "Info for marriage between "+from.n+" and "+to.n+":";
-                msg = arr1[0].info;
-              } else if (arr1.length==0) {
-                msg = "No additional info for marriage between "+from.n+" and "+to.n+".";
-              } else {
-                msg = "Err: multiple matching marriages";
-              }
+                if (part.data.hasOwnProperty("info")) {
+                    head = "Info for marriage between "+from.n+" and "+to.n+":";
+                    msg = part.data.info;
+                } else {
+                    msg = "No additional info for marriage between "+from.n+" and "+to.n+".";
+                }
             }
           }
 
@@ -337,18 +339,6 @@
 
       
 
-      //   // determine the color/geometry for each attribute shape
-      var tlsq = go.Geometry.parse("F M1 1 l19 0 0 19 -19 0z");
-      function maleGeometry(a) {
-        return tlsq;
-      }
-      function femaleGeometry(a) {
-        return tlsq;
-      }
-      function xGeometry(a) {
-          return tlsq;
-      }
-
 
     // 3 different node templates, based on gender,
       // named by the category value in the node data object
@@ -358,95 +348,56 @@
           $(go.Panel,
             { name: "ICON" },
             $(go.Shape, "Square",
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" }),
-            $(go.Panel,
-              { // for each attribute show a Shape at a particular place in the overall square
-                itemTemplate:
-                  $(go.Panel,
-                    $(go.Shape,
-                      { stroke: null, strokeWidth: 0 },
-                    //   new go.Binding("fill", "", attrFill),
-                      new go.Binding("geometry", "", maleGeometry))
-                  ),
-                margin: 1
-              },
-              new go.Binding("itemArray", "a")
-            )
+              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
+              new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
+              ),
           ),
           $(go.TextBlock,
             { textAlign: "center", maxSize: new go.Size(80, NaN) },
             new go.Binding("text", "n"))
         ));
+
       myDiagram.nodeTemplateMap.add("F",  // female
         $(go.Node, "Vertical",
           { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
           $(go.Panel,
             { name: "ICON" },
             $(go.Shape, "Triangle",
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" }),
-            $(go.Panel,
-              { // for each attribute show a Shape at a particular place in the overall circle
-                itemTemplate:
-                  $(go.Panel,
-                    $(go.Shape,
-                      { stroke: null, strokeWidth: 0 },
-                    //   new go.Binding("fill", "", attrFill),
-                      new go.Binding("geometry", "", femaleGeometry))
-                  ),
-                margin: 1
-              },
-              new go.Binding("itemArray", "a")
-            )
+              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
+              new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
+              ),
           ),
           $(go.TextBlock,
             { textAlign: "center", maxSize: new go.Size(80, NaN) },
             new go.Binding("text", "n"))
         ));
-        myDiagram.nodeTemplateMap.add("X",  // other
+
+
+        myDiagram.nodeTemplateMap.add("X",  // other or unknown gender
         $(go.Node, "Vertical",
           { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
           $(go.Panel,
             { name: "ICON" },
             $(go.Shape, "Diamond",
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" }),
-            $(go.Panel,
-              { // for each attribute show a Shape at a particular place in the overall circle
-                itemTemplate:
-                  $(go.Panel,
-                    $(go.Shape,
-                      { stroke: null, strokeWidth: 0 },
-                    //   new go.Binding("fill", "", attrFill),
-                      new go.Binding("geometry", "", xGeometry))
-                  ),
-                margin: 1
-              },
-              new go.Binding("itemArray", "a")
-            )
+              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
+              new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
+              ),
           ),
           $(go.TextBlock,
             { textAlign: "center", maxSize: new go.Size(80, NaN) },
             new go.Binding("text", "n"))
         ));
-        myDiagram.nodeTemplateMap.add("P",  // other
+
+
+        myDiagram.nodeTemplateMap.add("P",  // pets
         $(go.Node, "Vertical",
           { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
           $(go.Panel,
             { name: "ICON" },
             $(go.Shape, "Circle",
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" }),
-            $(go.Panel,
-              { // for each attribute show a Shape at a particular place in the overall circle
-                itemTemplate:
-                  $(go.Panel,
-                    $(go.Shape,
-                      { stroke: null, strokeWidth: 0 },
-                    //   new go.Binding("fill", "", attrFill),
-                      new go.Binding("geometry", "", xGeometry))
-                  ),
-                margin: 1
-              },
-              new go.Binding("itemArray", "a")
-            )
+              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
+              new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
+              ),
           ),
           $(go.TextBlock,
             { textAlign: "center", maxSize: new go.Size(80, NaN) },
@@ -467,13 +418,22 @@
           },
           $(go.Shape, { strokeWidth: 2 })
         );
+                var marriageWithInfo = "red";
+                var marriageWithoutInfo = "blue";
       myDiagram.linkTemplateMap.add("Marriage",  // for marriage relationships
         $(go.Link,
           {
             selectable: true
-            // ,routing: go.Link.AvoidsNodes
+            ,routing: go.Link.AvoidsNodes
           },
-          $(go.Shape, { strokeWidth: 10, stroke: "blue" })
+                // two "main" strokes so that a transparent clickable one overlies a sleek visible one
+            $(
+              go.Shape, { isPanelMain: true, strokeWidth: 15, stroke: "transparent" },
+            ),
+            $(
+                go.Shape, {isPanelMain: true, strokeWidth: 4, stroke: marriageWithoutInfo},
+                new go.Binding("stroke", "info", function (i) { return i.length>3 ? marriageWithInfo : marriageWithoutInfo}),
+            )
         ));
 
       setupDiagram(myDiagram, familyInfo, 4 /* focus on this person */);
@@ -523,20 +483,28 @@
         if (uxs !== undefined) {
           if (typeof uxs === "number" || typeof uxs === "string") uxs = [uxs];
           for (var j = 0; j < uxs.length; j++) {
-            var wife = uxs[j];
-            if (key === wife) {
+            var spouse = uxs[j];
+            if (key === spouse) {
               // or warn no reflexive marriages
               continue;
             }
-            var link = findMarriage(diagram, key, wife);
+            var link = findMarriage(diagram, key, spouse);
             if (link === null) {
               // add a label node for the marriage link
               var mlab = { s: "LinkLabel" };
               model.addNodeData(mlab);
               // add the marriage link itself, also referring to the label node
-              var mdata = { from: key, to: wife, labelKeys: [mlab.key], category: "Marriage" };
+              var info;
+              mInfo = marriagesInfo.filter(d => (d.sA==key || d.sB==key) && (d.sA==spouse || d.sB==spouse))
+              if (mInfo.length>0) {
+                infor = mInfo[0].info
+                var mdata = { from: key, to: spouse, labelKeys: [mlab.key], category: "Marriage", info: infor };
+              } else {
+                var mdata = { from: key, to: spouse, labelKeys: [mlab.key], category: "Marriage" };
+              }
+
               model.addLinkData(mdata);
-            }
+            } 
           }
         }
       }

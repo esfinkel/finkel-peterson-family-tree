@@ -3,12 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Finkel/Peterson Family Tree</title>
+  <link rel="stylesheet" href="styles.scss">
   <meta name="description" content="Family tree for the Finkel-Peterson family." />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Copyright 1998-2019 by Northwoods Software Corporation. -->
 
   <script src="go.js"></script>
   <script id="code">
+
+  function GetURLParameter(sParam) {
+    try {
+      var sPageURL = window.location.search.substring(1);
+      var sURLVariables = sPageURL.split('&');
+      for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+          return sParameterName[1];
+        }
+      }
+    } catch(err) {
+      return null;
+    }
+  }
+
 
     marriagesInfo = [{sA: 2, sB: 3, info: "married in 1900"}];
 
@@ -18,18 +35,8 @@
     // p1 is parent1 (should be that person's key)
     // p2 is parent2
     // ux is spouse's key
-    // n: name, s: gender, m: mother, f: father, p1: parent1, p2: parent2, ux: spouse, a: attributes/markers
-    familyInfo = [
-
-// Patyk-Finkel
-
-{ key: 1, n: "Leo Patyk-Finkel", s: "M", p1: 2, p2: 3, info: "Lives in Vermont" },
-{ key: 2, n: "Lynn", s: "F", p1: 16, p2: 19, ux: 3, info: "Lives in Vermont, works at Dartmouth" },
-{ key: 3, n: "Stu", s: "M", p1: 22, p2: 23,ux: 2, info: "Lives in Vermont, works at Dartmouth" },
-{ key: 4, n: "Max", s: "M", p1: 2, p2: 3, info: "Lives in Colorado" },
-{ key: "3a", n: "Chloe", s: "P", p1: 2, p2: 3, info: "Species: Dog. Breed: Golden Doodle" },
-
-// Finkel(Peterson)
+    // n: name, s: gender, p1: parent1, p2: parent2, ux: spouse, a: attributes/markers
+    var FinkelPetersons = [
 
 { key: 5, n: "Ellie", s: "F", p1: 6, p2: 7, info: "Lives in New York" },
 { key: 6, n: "Sue Peterson", s: "F", p1: 28, p2: 29, ux: 7, info: "Lives in Illinois, works at Northwestern Hospital" },
@@ -40,7 +47,25 @@
 { key: "7b", n: "Midnight", s: "P", p1: 6, p2: 7, info: "Species: House Cat" },
 { key: "7c", n: "Tigris", s: "P", p1: 6, p2: 7, info: "Species: House Cat" },
 
+];
+
+// Patyk-Finkel
+
+var PatykFinkels = [
+
+{ key: 1, n: "Leo Patyk-Finkel", s: "M", p1: 2, p2: 3, info: "Lives in Vermont" },
+{ key: 2, n: "Lynn", s: "F", p1: 16, p2: 19, ux: 3, info: "Lives in Vermont, works at Dartmouth" },
+{ key: 3, n: "Stu", s: "M", p1: 22, p2: 23,ux: 2, info: "Lives in Vermont, works at Dartmouth" },
+{ key: 4, n: "Max", s: "M", p1: 2, p2: 3, info: "Lives in Colorado" },
+{ key: "3a", n: "Chloe", s: "P", p1: 2, p2: 3, info: "Species: Dog. Breed: Golden Doodle" },
+
+];
+
+// PATYKS 
+
 // Anders
+
+var Patyks = [
 
 { key: 10, n: "Addie", s: "F", p1: 11, p2: 12, info: "Lives in Wisconsin" },
 { key: 11, n: "Laura", s: "F", p1: 16, p2: 19, ux: 12, info: "Live in Wisconsin" },
@@ -54,34 +79,30 @@
 //Czarnecki Family
 
 {key: 16, n: "Gloria Czarnecki" , s: "F", p1: 17, p2: 18, ux: 19 },
+{key: 54, n: "Diane", s: "F", p1: 17, p2: 18},
 {key: 17, n: "Stella Smerlinsky" , s: "F", ux: 18 },
 {key: 18, n: "Julian" , s: "M", ux: 17 },
 
 //Patyk Family
 
 {key: 19, n: "Gary" , s: "M", p1: 20, p2: 21, ux: 16 },
-{key: 20, n: "Jean", s: "F", ux: 21 },
-{key: 21, n: "???(Patyk)", s: "M", ux: 20 },
+{key: 20, n: "Jean", s: "F", p1: 55, p2: 56, ux: 21 },
+{key: 21, n: "Gilbert", s: "M", ux: 20 },
+{key: 55, n: "Joesph Kapzhak", s: "M", ux: 56 },
+{key: 56, n: "Angelina Hauke", s: "F", ux: 55 },
 
+];
+
+// FINKELS
 //Finkel(Richman)
+
+
+var Finkels = [
 
 {key: 22, n: "Frances \"Fran\"", s: "F", p1: -1, p2: -28, ux:23, info: "Lives in Pennsylvania" },
 {key: 23, n: "Lawrence \"Larry\" Finkel", s: "M", p1: 38, p2: -33, ux: 22 },
 
-//Manthey
 
-{ key: 24, n: "Emma Manthey", s: "F", p1: 25, p2: 26, info: "Lives in Illinois" },
-{ key: 25, n: "Catherine", s: "F", p1: 28, p2: 29, ux: 26, info: "Lives in Illinois" },
-{ key: 26, n: "Jim Manthey", s: "M", ux: 25, info: "Lives in Illinois" },
-
-//Dave Jr. Peterson
-
-{ key: 27, n: "Dave Jr.", s: "M", p1: 28, p2: 29 },
-
-// Peterson
-
-{ key: 28,  n: "Rosalind", s: "F", p1: -51, p2: -54, ux: 29, info: "or \"sis\". Lives in Illinois" },
-{ key: 29, n: "Dave Sr.", s: "M", p1: -37, p2: -38, ux: 28, info: "Lived in Illinois" },
 
 //Hunn
 
@@ -103,8 +124,8 @@
 { key: 38, n: "Samuel Finkel", s: "M", p1: 47, p2: 36 },
 { key: 39, n: "Cele Shulman", s: "F", ux: 38 },
 { key: 46, n: "Evelyn Kabatznick", s: "F", ux: 38 },
-{ key: 47, n: "Max Finkel", s: "M", ux: 36 },
-{ key: 36, n: "Yetta", s: "F", ux: 47 },
+{ key: 47, n: "Max Finkel", s: "M", ux: 36, info: "Arrived from A russia town to Glasgow Sctoland to Ellis Island in 1902, born in Kamyantes Podlis'kyy, Russia(Now in Ukraine), lived in Brooklyn and Montrea" },
+{ key: 36, n: "Yetta", s: "F", ux: 47, info: "Maiden name Horowitz" },
 { key: "47a", n: "Solomon?", s: "M", p1: 47, p2: 36 },
 { key: "47b", n: "Ethel", s: "F", p1: 47, p2: 36 },
 { key: "47ba", n: "Lou Brandow", s: "M", ux: "47b" },
@@ -119,8 +140,6 @@
 { key: 43, n: "Becky", s: "F", ux: 42 },
 	{ key: "42a", n: "Jill", s: "F", p1: 42, p2: 43 },
 	{ key: "42b", n: "Robin", s: "F", p1: 42, p2: 43 },
-{ key: 44, n: "Elissa", s: "F", p1: 40, p2: 41 },
-{ key: 45, n: "Thomas", s: "M", p1: 44 },
 
 //Slotkin(sub)
 
@@ -136,7 +155,9 @@
 { key: "52b", n: "Harriet", s: "F", p1: 52, p2: 53 },
 
 
+
 //Richman family
+
 { key: -1, n: "Samuel Richman", s: "M", p1: -2, p2: -7, ux: -28, info: "he was an 'upholder'" },
 // W Pearl shur. married on March 11 1936
 { key: -2, n: "Louis", s: "M", p1: -3, p2: -4, ux: -7, info: "Louis Richman" },
@@ -188,6 +209,7 @@
 
 
 { key: -27, n: "Charles", s: "M", p1: -8, p2: -9 },
+// TODO
 
 
 
@@ -196,7 +218,7 @@
 { key: "?1a", n: "", s: "X", ux: "?1b" },
 { key: "?1b", n: "", s: "X", ux: "?1a" },	
 { key: -31, n: "Nathan", s: "M", p1: "?1a", p2: "?1b", ux: "-31s" },
-{ key: "-31s", n: "Harry", s: "F", ux: -31 },
+{ key: "-31s", n: "?", s: "F", ux: -31 },
 	{ key: "-31b", n: "Jake", s: "M", p1: -31, p2: "-31s" },
 { key: -32, n: "Harry", s: "M",  p1: "?1a", p2: "?1b" },
 { key: -29, n: "Joseph Shur", s: "M", p1: "?1a", p2: "?1b", ux: -30, info: "" },
@@ -240,6 +262,32 @@
 	{ key: "-36bbb", n: "Valerie", s: "F", p1: "-36bb", p2: "-36bbs" },
 	{ key: "-36bbc", n: "Stephanie", s: "F", p1: "-36bb", p2: "-36bbs" },
 { key: "-36bc", n: "Bennet", s: "M", p1: "-36b", p2: "-36bs" },
+
+];
+
+
+// PETERSONS
+
+
+var Petersons = [
+
+
+//Manthey
+
+{ key: 24, n: "Emma Manthey", s: "F", p1: 25, p2: 26, info: "Lives in Illinois" },
+{ key: 25, n: "Catherine", s: "F", p1: 28, p2: 29, ux: 26, info: "Lives in Illinois" },
+{ key: 26, n: "Jim Manthey", s: "M", ux: 25, info: "Lives in Illinois" },
+
+//Dave Jr. Peterson
+
+{ key: 27, n: "Dave Jr.", s: "M", p1: 28, p2: 29 },
+
+// Peterson
+
+{ key: 28,  n: "Rosalind", s: "F", p1: -51, p2: -54, ux: 29, info: "or \"sis\". Lives in Illinois" },
+{ key: 29, n: "Dave Sr.", s: "M", p1: -37, p2: -38, ux: 28, info: "Lived in Illinois" },
+
+
 
 
 
@@ -292,7 +340,7 @@
 { key: -52, n: "Catherine (Rutkowski)", s: "F", ux: -53, info: "Lived in Minuck, IL" },
 { key: -53, n: "Joseph (?)", s: "M", ux: -52, info: "Lived in Minuck, IL" },
 
-{ key: -54, n: "Edward Prentice", s: "M", p1: -56, p2: -57, ux: -55, info: "\"English and moved to Belfast, Ireland. came to the United States around 1889, when [he] was five years old.\" -R Peterson" },
+{ key: -54, n: "Edward Prentice", s: "M", p1: -56, p2: -57, info: "\"English and moved to Belfast, Ireland. came to the United States around 1889, when [he] was five years old.\" -R Peterson" },
 { key: -55, n: "Alex", s: "X", p1: -56, p2: -57, info: "Lived in Yakima, WA" },
 { key: -56, n: "?", s: "M", ux: -57, info: "was a streetcar conductor. \"English and moved to Belfast, Ireland. came to the United States around 1889, when [Edward Prentice] was five years old.\" -R Peterson" },
 { key: -57, n: "Lily Graham", s: "F", ux: -56, info: "\"English and moved to Belfast, Ireland. came to the United States around 1889, when [Edward Prentice] was five years old. died around 1915 from appendicitis.\" -R Peterson" },
@@ -304,25 +352,50 @@
 // Rosalind Peterson's siblings' families
 { key: -58, n: "Rosemary", s: "F", p1: -51, p2: -54, ux: "-58s", info: "\"born in Muncie, Indiana on October 25, 1939\" -R Peterson" },
 	{ key: "-58s", n: "?", s: "M", ux: -58 },
+	// TODO THEIR KIDS
 { key: -59, n: "Barbara", s: "F", p1: -51, p2: -54, ux: "-59s", info: "86 as of May 4 2017" },
 	{ key: "-59s", n: "Rudy Wolff", s: "M", ux: -59 },
+	// TODO THEIR KIDS
 { key: -60, n: "Ed", s: "M", p1: -51, p2: -54, ux: "-60s", info: "74 as of May 4 2017; lives in Powell, Mo." },
 	{ key: "-60s", n: "Beverly Jones", s: "F", ux: -60 },
-
-
-
-
-
-
-
-
-
+	// TODO THEIR KIDS
 
 ];
 
 
+
+
+
+
+
+
+
+
+
     
-function init() {
+function init(fam=null) {
+
+
+
+    if (GetURLParameter('info')=='true' || GetURLParameter('info')=='yes') {
+        setTimeout(function() { alert(    // asynchronous?
+            "INSTRUCTIONS:" + "\n" +
+            "Click on a name or marriage link to see extra info." + "\n" + 
+            "(Light blue people and red marriages have extra info.)" + "\n" +
+            "For a married couple, click on one member's '-' sign to see only their side of the family." + "\n" + 
+            "Drag and drop family members. Scroll and zoom normally."
+        ); }, 1);
+    }
+
+  if (fam==null) fam = GetURLParameter('family')
+  switch(fam) {
+    case 'finkel': var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels); break;
+    case 'patyk': var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks); break;
+    case 'peterson': var familyInfo = FinkelPetersons.concat(Petersons); break;
+    default: var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks).concat(Petersons); break;
+  };
+
+
       var $ = go.GraphObject.make;
       myDiagram =
       $(go.Diagram, "myDiagramDiv",
@@ -406,69 +479,188 @@ function init() {
       
 
 
-    // 3 different node templates, based on gender,
-      // named by the category value in the node data object
-      myDiagram.nodeTemplateMap.add("M",  // male
+
+
+
+
+      
+// make a better isTreeLeaf. if is someone's spouse, is not a leaf
+// collapse everyone except the people above you and their descendents
+// collect:
+// if node is not start:
+// make node invisible
+// x = list of spouses
+// y = list of children
+// z = []
+// if node is not start: z gets parents
+// z = list of parents
+// 
+// for p in (x+y+z):
+// if p is visible and p is not start:
+// collapse(p)
+
+      function findAllSpouses(p) {
+        return familyInfo.filter(d => d.ux==p.key || d.key==p.ux);
+      }
+
+      // function findAllSpousesKey(p_key) {
+      //   return findAllSpouses(getNode(p_key));
+      // }
+
+      function findAllChildren(p) {
+        return familyInfo.filter(d => d.p1==p.key || d.p2==p.key);
+      }
+
+      function aHasSpouseb(a, b) {
+        if (a.hasOwnProperty('ux') && a.ux==b.key) return true;
+        if (b.hasOwnProperty('ux') && b.ux==a.key) return true;
+        return false;
+      }
+
+      function aHasParentb(a, b) {
+        if (! a.hasOwnProperty('p1')) return false;
+        return a.p1==b.key || a.p2==b.key;
+      }
+
+      function collapseFrom(node, start) {
+        if (node.data.isCollapsed) return;
+
+        // if (node==start) {node.diagram.model.setDataProperty(node.data, "visible", false); node.diagram.model.setDataProperty(node.data, "isCollapsed", true);}
+
+        node.diagram.model.setDataProperty(node.data, "sign", 'p');
+
+
+        if (node !== start) {
+            node.diagram.model.setDataProperty(node.data, "isCollapsed", true);
+            node.diagram.model.setDataProperty(node.data, "visible", false);
+        } else {
+            // var opos = node.diagram.transformDocToView(node.getDocumentPoint(go.Spot.Center));
+        }
+        var thisNodeData = node.data;
+        var x = findAllSpouses(thisNodeData);
+        var y = findAllChildren(thisNodeData);
+        var z = [];
+        if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
+
+        var toCollapse = [];
+        x.concat(y).forEach(p => toCollapse.push(p.key));
+        z.forEach(p => toCollapse.push(p));
+        toCollapse.forEach(p => {var pno = node.diagram.findNodeForKey(p); if (pno!==null && pno!==start) collapseFrom(pno, start);});  // if pno!==null && not start
+
+        if (node==start) {
+                        // node.diagram.rebuildParts();
+
+                        // node.diagram.model =         go.GraphObject.make(go.GraphLinksModel,
+                        // { // declare support for link label nodes
+                        //     linkLabelKeysProperty: "labelKeys",
+                        //     // this property determines which template is used
+                        //     nodeCategoryProperty: "s",
+                        //     // if a node data object is copied, copy its data.a Array
+                        //     copiesArrays: true,
+                        //     // create all of the nodes for people
+                        //     nodeDataArray: node.diagram.model.nodeDataArray
+                        // });
+
+                        // var npos = node.diagram.transformDocToView(node.getDocumentPoint(go.Spot.Center));
+                        // node.diagram.position = node.diagram.position.copy().add(npos).subtract(opos);
+                    }
+
+      }
+
+      function expandFrom(node, start) {
+        if (node!==start && !node.data.isCollapsed) return;
+        node.diagram.model.setDataProperty(node.data, "sign", 'm');
+        if (node !== start) {
+            node.diagram.model.setDataProperty(node.data, "isCollapsed", false);
+            node.diagram.model.setDataProperty(node.data, "visible", true);
+        }
+        var thisNodeData = node.data;
+        var x = findAllSpouses(thisNodeData);
+        var y = findAllChildren(thisNodeData);
+        var z = [];
+        if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
+
+        var toExpand = [];
+        x.concat(y).forEach(p => toExpand.push(p.key));
+        z.forEach(p => toExpand.push(p));
+        toExpand.forEach(p => {var pno = node.diagram.findNodeForKey(p); if (pno!==null && pno!==start) expandFrom(pno, start);});  // if pno!==null && not start
+
+        // node.findNodesOutOf().each(expandFrom);
+      }
+
+      function getP(key) {
+        var persons = familyInfo.filter(d => d.key==key);
+        if (persons.length==0) return null;
+        return persons[0];
+      }
+
+
+    var hasSpouse = [];
+    familyInfo.forEach(m => {m.sign = 'm'; if (!hasSpouse.includes(m.key) && m.hasOwnProperty("ux")) {hasSpouse.push(m.key); hasSpouse.push(m.ux)}});
+      function shouldHaveButton(node_key) {
+        // if you have a spouse and children
+        // if you have children, you have a spouse
+        // so just check for a spouse
+        return hasSpouse.includes(node_key);
+        // return true;
+      }
+
+
+      function addTemplate(diagm, gend, node_shape) {
+        diagm.nodeTemplateMap.add(gend,
         $(go.Node, "Vertical",
           { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
+          new go.Binding("visible"), 
           $(go.Panel,
             { name: "ICON" },
-            $(go.Shape, "Square",
+            $(go.Shape, node_shape,
               { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
               new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
               ),
           ),
           $(go.TextBlock,
             { textAlign: "center", maxSize: new go.Size(80, NaN) },
-            new go.Binding("text", "n"))
-        ));
+            new go.Binding("text", "n")),
 
-      myDiagram.nodeTemplateMap.add("F",  // female
-        $(go.Node, "Vertical",
-          { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
-          $(go.Panel,
-            { name: "ICON" },
-            $(go.Shape, "Triangle",
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
-              new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
-              ),
-          ),
-          $(go.TextBlock,
-            { textAlign: "center", maxSize: new go.Size(80, NaN) },
-            new go.Binding("text", "n"))
-        ));
+        $("Button",  // a replacement for "TreeExpanderButton" that works for non-tree-structured graphs
+            // assume initially not visible because there are no links coming out
+            { visible: false },
+            // bind the button visibility to whether it's not a leaf node
+            new go.Binding("visible", "key", shouldHaveButton)
+              .ofObject(),
+            $(go.Shape,
+              {
+                name: "ButtonIcon",
+                figure: "MinusLine",
+                desiredSize: new go.Size(6, 6)
+              },
+              new go.Binding("figure", "sign",  // data.isCollapsed remembers "collapsed" or "expanded"
+                function(s) { return s!='m' ? "PlusLine" : "MinusLine"; })),
+            {
+              click: function(e, obj) {
+                e.diagram.startTransaction();
+                var node = obj.part;
+                if (node.data.sign=='p') {
+                  expandFrom(node, node);
+                } else {
+                  collapseFrom(node, node);
+                }
+                e.diagram.commitTransaction("toggled visibility of dependencies");
+              }
+            })
+        
+        ),
+        );
+      }
 
 
-        myDiagram.nodeTemplateMap.add("X",  // other or unknown gender
-        $(go.Node, "Vertical",
-          { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
-          $(go.Panel,
-            { name: "ICON" },
-            $(go.Shape, "Diamond",
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
-              new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
-              ),
-          ),
-          $(go.TextBlock,
-            { textAlign: "center", maxSize: new go.Size(80, NaN) },
-            new go.Binding("text", "n"))
-        ));
+    addTemplate(myDiagram, "M", "Square");
 
+    addTemplate(myDiagram, "F", "Triangle");
 
-        myDiagram.nodeTemplateMap.add("P",  // pets
-        $(go.Node, "Vertical",
-          { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
-          $(go.Panel,
-            { name: "ICON" },
-            $(go.Shape, "Circle",
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
-              new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
-              ),
-          ),
-          $(go.TextBlock,
-            { textAlign: "center", maxSize: new go.Size(80, NaN) },
-            new go.Binding("text", "n"))
-        ));
+      addTemplate(myDiagram, "X", "Diamond");
+
+      addTemplate(myDiagram, "P", "Circle")
 
 
 
@@ -502,11 +694,11 @@ function init() {
             )
         ));
 
-      setupDiagram(myDiagram, familyInfo, 4 /* focus on this person */);
+      setupDiagram(myDiagram, familyInfo /* focus on this person */);
     }
     
     // create and initialize the Diagram.model given an array of node data representing people
-    function setupDiagram(diagram, array, focusId) {
+    function setupDiagram(diagram, array) {
       diagram.model =
         go.GraphObject.make(go.GraphLinksModel,
           { // declare support for link label nodes
@@ -540,8 +732,23 @@ function init() {
     }
     // now process the node data to determine marriages
     function setupMarriages(diagram) {
+
       var model = diagram.model;
       var nodeDataArray = model.nodeDataArray;
+
+      // for (var i = 0; i < nodeDataArray.length; i++) {
+      //   var data = nodeDataArray[i];
+      //   var key = data.key;
+      //   var uxs = data.ux;
+      //   if (uxs !== undefined) {
+      //     if (typeof uxs === "number" || typeof uxs === "string") uxs = [uxs];
+      //     uxs.forEach(function (sp_key) {
+      //       var sp = nodeDataArray.filter(p => sp_key==p.key)[0];
+      //       if (!sp.hasOwnProperty('ux')) sp.ux=[];
+      //       if (typeof sp.ux === "number" || typeof sp.ux === "string") sp.ux = [sp.ux];
+      //       });
+      // }
+
       for (var i = 0; i < nodeDataArray.length; i++) {
         var data = nodeDataArray[i];
         var key = data.key;
@@ -824,21 +1031,48 @@ function init() {
       }
       return null;
     };
+
+
+
+
+    function replaceDiagram(family=null) {
+      myDiagram.div = null;
+      myDiagram = null;
+      init(family);
+    }
     // end GenogramLayout class
   </script>
 </head>
+
 <body onload="init()">
-<div id="sample">
+<div>
+  <button class="btn" onclick="replaceDiagram()">All</button>
+  <button class="btn" onclick="replaceDiagram('finkel')">Finkels</button>
+  <button class="btn" onclick="replaceDiagram('patyk')">Patyks</button>
+  <button class="btn" onclick="replaceDiagram('peterson')">Petersons</button>
+  <p></p>
+
   <div id="myDiagramDiv" style="border: solid 2px black; width:100%; height:500px"></div>
   <div id="diagramEventsMsg">
     <strong><p id = "diagramEventsMsgHeader" style></p></strong>
     <p id = "diagramEventsMsgMsg"></p>
   </div>
-  <form action="https://forms.gle/6bpb4cXdFc5j4zcm8">
-    <button type="submit">Request addition/modification of data</button>
- </form>  
-  <button value="Refresh Page" onClick="window.location.reload();">Refresh page</button>
-  <div>Click on a name or marriage link to see extra info!</div>
+  
+  <h2>Instructions:</h2>
+  <ul>
+    <li>Click on a name or marriage link to see extra info!</li>
+    <li>(Light blue people and red marriages have extra info.)</li>
+    <li>For a married couple, click on one member's '-' sign to see only their side of the family.</li>
+    <li>Drag and drop family members. Scroll and zoom normally.</li>
+  </ul>
+  
+  <div class="left">
+    <form action="https://forms.gle/6bpb4cXdFc5j4zcm8">
+      <button class="btn" type="submit">Request addition/modification of data</button>
+    </form>  
+    <button class="btn" value="Refresh Page" onClick="window.location.reload();">Refresh page</button>
+  </div>
+
 </div>
 </body>
 </html>

@@ -436,6 +436,8 @@ function init(fam=null) {
       $(go.Diagram, "myDiagramDiv",
       {
         initialAutoScale: go.Diagram.Uniform,
+
+
         "undoManager.isEnabled": true,
         // when a node is selected, draw a big yellow circle behind it  // handle clicking/highlighting
         nodeSelectionAdornmentTemplate:
@@ -445,7 +447,7 @@ function init(fam=null) {
         $(go.Placeholder)
         ),
         layout:  // use a custom layout, defined below
-        $(GenogramLayout, { direction: 90, layerSpacing: 50, columnSpacing: 10, aggressiveOption: go.LayeredDigraphLayout.AggressiveMore, layeringOption: go.LayeredDigraphLayout.LayerOptimalLinkLength}) // last 2 don't seem to do anything
+        $(GenogramLayout, { direction: 90, layerSpacing: 50, columnSpacing: 10, aggressiveOption: go.LayeredDigraphLayout.AggressiveMore,})// layeringOption: go.LayeredDigraphLayout.LayerOptimalLinkLength}) // last 2 don't seem to do anything
       });
       
 
@@ -598,6 +600,10 @@ function init(fam=null) {
 
                         // var npos = node.diagram.transformDocToView(node.getDocumentPoint(go.Spot.Center));
                         // node.diagram.position = node.diagram.position.copy().add(npos).subtract(opos);
+
+                        // var v = node.diagram.layout.network.findVertex(node);
+                        // v.node.position = new go.Point(v.x, v.y);
+
                     }
 
       }
@@ -639,6 +645,7 @@ function init(fam=null) {
         return hasSpouse.includes(node_key);
         // return true;
       }
+
 
 
       function addTemplate(diagm, gend, node_shape) {
@@ -689,6 +696,7 @@ function init(fam=null) {
       }
 
 
+
     addTemplate(myDiagram, "M", "Square");
 
     addTemplate(myDiagram, "F", "Triangle");
@@ -696,6 +704,8 @@ function init(fam=null) {
       addTemplate(myDiagram, "X", "Diamond");
 
       addTemplate(myDiagram, "P", "Circle")
+
+
 
 
 
@@ -729,7 +739,8 @@ function init(fam=null) {
             )
         ));
 
-      setupDiagram(myDiagram, familyInfo /* focus on this person */);
+      setupDiagram(myDiagram, familyInfo);
+
     }
     
     // create and initialize the Diagram.model given an array of node data representing people
@@ -966,7 +977,10 @@ function init(fam=null) {
         }
       });
     };
+
+
     GenogramLayout.prototype.assignLayers = function() {
+        var starttime = performance.now();
       go.LayeredDigraphLayout.prototype.assignLayers.call(this);
       var horiz = this.direction == 0.0 || this.direction == 180.0;
       // for every vertex, record the maximum vertex width or height for the vertex's layer
@@ -993,16 +1007,22 @@ function init(fam=null) {
       });
       // from now on, the LayeredDigraphLayout will think that the Node is bigger than it really is
       // (other than the ones that are the widest or tallest in their respective layer).
+    //   window.console.log('' + performance.now()-starttime + ' ms - assigned layers');
     };
+
+
     GenogramLayout.prototype.commitNodes = function() {
+    // window.console.log('starting - commit nodes');
       go.LayeredDigraphLayout.prototype.commitNodes.call(this);
       // position regular nodes
+    //   window.console.log('position regular nodes');
       this.network.vertexes.each(function(v) {
         if (v.node !== null && !v.node.isLinkLabel) {
           v.node.position = new go.Point(v.x, v.y);
         }
       });
       // position the spouses of each marriage vertex
+    //   window.console.log('position the spouses of each marriage vertex');
       var layout = this;
       this.network.vertexes.each(function(v) {
         if (v.node === null) return;
@@ -1015,12 +1035,12 @@ function init(fam=null) {
         lablink.invalidateRoute();
         var spouseA = lablink.fromNode;
         var spouseB = lablink.toNode;
-        // // prefer fathers on the left, mothers on the right
-        // if (spouseA.data.s === "F") {  // gender is female
-        //   var temp = spouseA;
-        //   spouseA = spouseB;
-        //   spouseB = temp;
-        // }
+        // prefer fathers on the left, mothers on the right
+        if (spouseA.data.s === "F") {  // gender is female
+          var temp = spouseA;
+          spouseA = spouseB;
+          spouseB = temp;
+        }
         // see if the parents are on the desired sides, to avoid a link crossing
         var aParentsNode = layout.findParentsMarriageLabelNode(spouseA);
         var bParentsNode = layout.findParentsMarriageLabelNode(spouseB);
@@ -1043,6 +1063,7 @@ function init(fam=null) {
         }
       });
       // position only-child nodes to be under the marriage label node
+      var starttime = performance.now(); 
       this.network.vertexes.each(function(v) {
         if (v.node === null || v.node.linksConnected.count > 1) return;
         var mnode = layout.findParentsMarriageLabelNode(v.node);
@@ -1057,7 +1078,10 @@ function init(fam=null) {
           }
         }
       });
+    //   window.console.log('' + performance.now()-starttime + ' ms - positioned only-child nodes to be under the marriage label node');
+    // window.console.log('finished - commit nodes');
     };
+
     GenogramLayout.prototype.findParentsMarriageLabelNode = function(node) {
       var it = node.findNodesInto();
       while (it.next()) {

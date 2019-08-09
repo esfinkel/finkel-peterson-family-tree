@@ -57,7 +57,7 @@ var PatykFinkels = [
 
 { key: 1, n: "Leo Patyk-Finkel", s: "M", p1: 2, p2: 3, info: "Lives in Vermont" },
 { key: 2, n: "Lynn", s: "F", p1: 16, p2: 19, ux: 3, info: "Lives in Vermont, works at Dartmouth" },
-{ key: 3, n: "Stu", s: "M", p1: 22, p2: 23,ux: 2, info: "Lives in Vermont, works at Dartmouth" },
+{ key: 3, n: "Stuart Finkel", s: "M", p1: 22, p2: 23,ux: 2, info: "Lives in Vermont, works at Dartmouth" },
 { key: 4, n: "Max", s: "M", p1: 2, p2: 3, info: "Lives in Colorado" },
 { key: "3a", n: "Chloe", s: "P", p1: 2, p2: 3, info: "Species: Dog. Breed: Golden Doodle" },
 
@@ -72,7 +72,7 @@ var Patyks = [
 
 { key: 10, n: "Addie", s: "F", p1: 11, p2: 12, info: "Lives in Wisconsin" },
 { key: 11, n: "Laura", s: "F", p1: 16, p2: 19, ux: 12, info: "Live in Wisconsin" },
-{ key: 12, n: "Jay", s: "M", ux: 11, info: "Lives in Wisconsin, works at Miller Beerl" },
+{ key: 12, n: "Jay Anders", s: "M", ux: 11, info: "Lives in Wisconsin, works at Miller Beerl" },
 { key: 13, n: "Braden", s: "M", p1: 11, p2: 12, info: "Lives in  Wisconsin" },
 { key: 14, n: "Drew", s: "M", p1: 11, p2: 12, info: "Lives in Wisconsin" },
 
@@ -84,7 +84,7 @@ var Patyks = [
 {key: 16, n: "Gloria Czarnecki" , s: "F", p1: 17, p2: 18, ux: 19 },
 {key: 54, n: "Diane", s: "F", p1: 17, p2: 18 },
 {key: 57, n: "Lois", s: "F", p1: 17, p2: 18 },
-{key: 58, n: "Susan", s: "F", p1: 17, p2: 18, ux: "58a" },
+// {key: 58, n: "Susan", s: "F", p1: 17, p2: 18, ux: "58a" },
 	{key: "58a", n: "Gary", s: "M", ux: 58 },
 	{key: "58b", n: "Shannon", s: "F", p1: 58, p2: "58a" },
 {key: "58c", n: "Joe", s: "M", p1: 58, p2: "58a" },
@@ -96,7 +96,7 @@ var Patyks = [
 {key: 19, n: "Gary" , s: "M", p1: 20, p2: 21, ux: 16 },
 {key: 59, n: "Gregory", s: "M", p1: 20, p2: 21, ux: "59a" },
 	{key: "59a", n: "", s: "F", ux: 59 }, // anon 
-	{key: "59b", n: "Sean", s: "M", ux: "59ba" },
+	{key: "59b", n: "Sean", s: "M", p1: 59, p2: "59a", ux: "59ba" },
 	{key: "59ba", n: "", s: "F", ux: "59b" }, // anon
 {key: 20, n: "Jean", s: "F", p1: 55, p2: 56, ux: 21 },
 {key: 21, n: "Gilbert", s: "M", ux: 20 },
@@ -327,7 +327,7 @@ var Petersons = [
 { key: "-42z", n: "Calvin B", s: "M", p1: -43, p2: -44, info: "born ~1830" },
 { key: -43, n: "Ephraim W W", s: "M", p1: -45, p2: -46, ux: -44, info: "25 Feb 1802 (NH?) - 13 Feb 1863 (Windham, VT). something is \"Oanmiston\"? can't read" },
 { key: -44, n: "Lydia J (nee Harris)", s: "F", ux: -43, info: "b. 1810" },
-{ key: -45, n: "Betsey (nee Veazay", s: "F", ux: -46, info: "(sp?) b 1775. d ?" },
+{ key: -45, n: "Betsey (nee Veazay)", s: "F", ux: -46, info: "(sp?) b 1775. d ?" },
 { key: -46, n: "Abiel Walker", s: "M", p1: -47, p2: -48, ux: -45, info: "B 1768, Andover, Mass. D 1838, Westmoreland, NH" },
 { key: -47, n: "Benjamin Walker III (the soldier)", s: "M", p1: -49, p2: -50, ux: -48, info: "B 6 Oct 1741 Billerica, MA. D 15 Aug 1775 Boston jail. So much detail: https://goo.gl/UZaHn5" },
 	{ key: "-47x", n: "William", s: "M", p1: -49, p2: -50, info: "b 22 Mar 1742." },

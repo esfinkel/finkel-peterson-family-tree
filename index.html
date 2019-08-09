@@ -638,7 +638,7 @@ function init(fam=null) {
           $(go.Panel,
             { name: "ICON" },
             $(go.Shape, node_shape,
-              { width: 40, height: 40, strokeWidth: 2, fill: "white", portId: "" },
+              { width: 40, height: 40, strokeWidth: 2, fill: "#F0FFF0", portId: "" },
               new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
               ),
           ),
@@ -1093,8 +1093,8 @@ function init(fam=null) {
   <button class="btn" onclick="replaceDiagram('peterson')">Petersons</button>
   <p></p>
 
-  <div id="myDiagramDiv" style="border: solid 2px black; width:100%; height:500px; background-color: #F8F8FF;"></div> 
-  <!-- E6E6FA -->
+  <div id="myDiagramDiv" style=" width:100%; height:500px; background-color: #F8F8FF;"></div> 
+  <!-- E6E6FA    border: solid 2px black;  -->
   <div id="diagramEventsMsg">
     <strong><p id = "diagramEventsMsgHeader" style></p></strong>
     <p id = "diagramEventsMsgMsg"></p>

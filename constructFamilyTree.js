@@ -32,12 +32,12 @@ function init(fam=null) {
 
   // specify a family
 
-if (fam==null) fam = GetURLParameter('family')
+if (fam==null) fam = GetURLParameter('family');
 switch(fam) {
-  case 'finkel': var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels); break;
-  case 'patyk': var familyInfo = PatykFinkels.concat(Patyks); break;
-  case 'peterson': var familyInfo = FinkelPetersons.concat(Petersons); break;
-  default: var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks).concat(Petersons); break;
+  case 'finkel': var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels); document.getElementById("current-family-name").textContent='Finkels'; break;
+  case 'patyk': var familyInfo = PatykFinkels.concat(Patyks); document.getElementById("current-family-name").textContent='Patyks'; break;
+  case 'peterson': var familyInfo = FinkelPetersons.concat(Petersons); document.getElementById("current-family-name").textContent='Petersons'; break;
+  default: var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks).concat(Petersons); document.getElementById("current-family-name").textContent='All'; break;
 };
 
     // make diagram

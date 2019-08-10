@@ -17,15 +17,21 @@
 <div>
   <div style="display: flex; flex-flow: row wrap;"> 
 
-    <button class="btn" onclick="replaceDiagram()">All</button>
-    <button class="btn" onclick="replaceDiagram('finkel')">Finkels</button>
-    <button class="btn" onclick="replaceDiagram('patyk')">Patyks</button>
-    <button class="btn" onclick="replaceDiagram('peterson')">Petersons</button>
+    <div class="family-button-container">
+      <button class="btn" id="allFamilies" onclick="replaceDiagram()">All</button>
+      <button class="btn" onclick="replaceDiagram('finkel')">Finkels</button>
+      <button class="btn" onclick="replaceDiagram('patyk')">Patyks</button>
+      <button class="btn" onclick="replaceDiagram('peterson')">Petersons</button>
+    </div>
+
+    <span class="current-family">Current family: <span id="current-family-name">Text</span></span>
+
     <form style="margin-left: auto;" target="_blank" action="https://forms.gle/6bpb4cXdFc5j4zcm8">
       <button class="btn" type="submit">Request addition/modification of data</button>
     </form>  
     <button class="btn" value="Refresh Page" onClick="window.location.reload();">Refresh page</button>
   </div>
+
   <p></p>
 
   <div id="myDiagramDiv"></div> 

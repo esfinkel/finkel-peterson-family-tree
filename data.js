@@ -23,9 +23,9 @@ var FinkelPetersons = [
 { key: 7, n: "Edward Finkel", s: "M", p1: 22, p2: 23, ux: 6, info: "Lives in Illinois" },
 { key: 8, n: "Maddie", s: "F", p1: 6, p2: 7, info: "Lives in Illinois" },
 { key: 9, n: "Jake", s: "M", p1: 6, p2: 7, info: "Lives in Illinois" },
-{ key: "7a", n: "Luna", s: "P", p1: 6, p2: 7, info: "Species: Dog. Breed: Golden Doodle" },
-{ key: "7b", n: "Midnight", s: "P", p1: 6, p2: 7, info: "Species: House Cat" },
-{ key: "7c", n: "Tigris", s: "P", p1: 6, p2: 7, info: "Species: House Cat" },
+{ key: "7a", n: "", s: "P", p1: 6, p2: 7, info: "Name: Luna. Species: Dog. Breed: Golden Doodle\nName: Midnight. Species: House Cat\nName: Tigris. Species: House Cat." },
+// { key: "7b", n: "Midnight", s: "P", p1: 6, p2: 7, info: "Species: House Cat" },
+// { key: "7c", n: "Tigris", s: "P", p1: 6, p2: 7, info: "Species: House Cat" },
 
 ];
 

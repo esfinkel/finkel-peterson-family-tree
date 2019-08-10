@@ -61,15 +61,15 @@ function init(fam=null, firsttime=true) {
   // displace user info
   
   function showMessage(h, m, url=[]) {
-    document.getElementById("diagramEventsMsgHeader").textContent = h;
-    document.getElementById("diagramEventsMsgMsg").textContent = m;
+    document.getElementById("diagramEventsMsgHeader").innerText = h;
+    document.getElementById("diagramEventsMsgMsg").innerText = m;
     
     if (url.length>1) {
-      document.getElementById("diagramEventsLink").textContent = url[0];
+      document.getElementById("diagramEventsLink").innerText = url[0];
       document.getElementById("diagramEventsLink").setAttribute('href', url[1]);
     } else {
-      document.getElementById("diagramEventsLink").textContent = "";
-      document.getElementById("diagramEventsLink").setAttribute('href', "");  
+      document.getElementById("diagramEventsLink").innerText = "";
+      document.getElementById("diagramEventsLink").setAttribute('href', "#");  
     }
   }
     

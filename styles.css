@@ -24,6 +24,7 @@ h1 {
   width:90%;
   height:400px;
   margin: 10px;
+  border-radius: 10px;
   /* resize: vertical;
   overflow: scroll;
   bottom: 14px; */
@@ -57,6 +58,7 @@ h1 {
 
 .textbox {
   border: 10px solid green;
+  border-radius: 15px;
   padding: 20px;
   margin: 20px;
   min-height: 100px;
@@ -67,6 +69,8 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   font-family: 'Apple Chancery', sans-serif;
   background-color: #F8F8FF;
   background-image: url(https://img.freepik.com/free-photo/watercolor-paper-texture_1194-5416.jpg?size=626&ext=jpg);
@@ -85,7 +89,7 @@ h1 {
   cursor: pointer;
   display: inline-block;
   font-size: 1.4rem;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   padding: 6px 12px;
   text-align: center;
   text-decoration: none;

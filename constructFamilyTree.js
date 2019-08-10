@@ -351,8 +351,8 @@ $(go.Diagram, "myDiagramDiv",
     
     myDiagram.zoomslider = new ZoomSlider(myDiagram, {
         //   alignment: go.Spot.BottomRight, alignmentFocus: go.Spot.BottomRight,
-          alignment: go.Spot.TopLeft, alignmentFocus: go.Spot.TopLeft,
-          size: 150, buttonSize: 30, orientation: 'vertical'
+          alignment: go.Spot.TopRight, alignmentFocus: go.Spot.TopRight, 
+          size: 150, buttonSize: 30, orientation: 'horizontal'
         });
     
 

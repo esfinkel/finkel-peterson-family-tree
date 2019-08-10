@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Finkel/Peterson Family Tree</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ZoomSlider.css">
   <meta name="description" content="Family tree for the Finkel-Peterson family." />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Copyright 1998-2019 by Northwoods Software Corporation. -->
@@ -16,7 +17,7 @@
 
 <body onload="init()">
 <div>
-  <div style="display: flex; flex-flow: row wrap;"> 
+  <div style="display: flex; flex-flow: row wrap; margin-bottom: 10px;"> 
 
     <div class="family-button-container">
       <button class="btn" id="allFamilies" onclick="replaceDiagram()">All</button>
@@ -27,7 +28,7 @@
 
     <span class="current-family">Current family: <span id="current-family-name">Text</span></span>
 
-    <form style="margin-left: auto;" target="_blank" action="https://forms.gle/6bpb4cXdFc5j4zcm8">
+    <form target="_blank" action="https://forms.gle/6bpb4cXdFc5j4zcm8">
       <button class="btn" type="submit">Request addition/modification of data</button>
     </form>  
     <button class="btn" value="Refresh Page" onClick="window.location.reload();">Refresh page</button>
@@ -36,7 +37,7 @@
   <p></p>
 
   <div style="position: relative; display: flex; flex-flow: row wrap;">
-    <div id="myDiagramDiv" style="display: grid;"></div> 
+    <div id="myDiagramDiv"></div> 
   </div>
   <!-- E6E6FA    border: solid 2px black;  -->
   

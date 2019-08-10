@@ -252,12 +252,12 @@ function init(fam=null, firsttime=true) {
       $(go.Panel,
         { name: "ICON" },
         $(go.Shape, node_shape,
-          { width: 40, height: 40, strokeWidth: 2, fill: "#F0FFF0", portId: "" },
+          { width: 40, height: 40, strokeWidth: 3, fill: "#F0FFF0", portId: "" },
           new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
         ),
       ),
       $(go.TextBlock,
-        { textAlign: "center", maxSize: new go.Size(100, NaN), font: "14pt sans-serif" },
+        { textAlign: "center", maxSize: new go.Size(120, NaN), font: "14pt sans-serif" },
         new go.Binding("text", "n")),
 
       $("Button",  // a replacement for "TreeExpanderButton" that works for non-tree-structured graphs

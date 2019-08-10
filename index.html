@@ -15,33 +15,48 @@
 
 <body onload="init()">
 <div>
-  <button class="btn" onclick="replaceDiagram()">All</button>
-  <button class="btn" onclick="replaceDiagram('finkel')">Finkels</button>
-  <button class="btn" onclick="replaceDiagram('patyk')">Patyks</button>
-  <button class="btn" onclick="replaceDiagram('peterson')">Petersons</button>
-  <p></p>
+  <div style="display: flex; flex-flow: row wrap;"> 
 
-  <div id="myDiagramDiv" style=" width:100%; height:500px; background-color: #F8F8FF;"></div> 
-  <!-- E6E6FA    border: solid 2px black;  -->
-  <div id="diagramEventsMsg">
-    <strong><p id = "diagramEventsMsgHeader" style></p></strong>
-    <p id = "diagramEventsMsgMsg"></p>
-  </div>
-  
-  <h2>Instructions:</h2>
-  <ul>
-    <li>Click on a name or marriage link to see extra info!</li>
-    <li>(Light blue people and red marriages have extra info.)</li>
-    <li>For a married couple, click on one member's '-' sign to see only their side of the family.</li>
-    <li>Drag and drop family members. Scroll and zoom normally.</li>
-  </ul>
-  
-  <div class="left">
-    <form action="https://forms.gle/6bpb4cXdFc5j4zcm8">
+    <button class="btn" onclick="replaceDiagram()">All</button>
+    <button class="btn" onclick="replaceDiagram('finkel')">Finkels</button>
+    <button class="btn" onclick="replaceDiagram('patyk')">Patyks</button>
+    <button class="btn" onclick="replaceDiagram('peterson')">Petersons</button>
+    <form style="margin-left: auto;" action="https://forms.gle/6bpb4cXdFc5j4zcm8">
       <button class="btn" type="submit">Request addition/modification of data</button>
     </form>  
     <button class="btn" value="Refresh Page" onClick="window.location.reload();">Refresh page</button>
   </div>
+  <p></p>
+
+  <div id="myDiagramDiv"></div> 
+  <!-- E6E6FA    border: solid 2px black;  -->
+  
+  
+  
+  <div class="row">
+    <div class="column">
+      
+      <h2 style="text-align: center;">Instructions</h2>
+      <ul>
+        <li>Click on a name or marriage link to see extra info!</li>
+        <li>(Light blue people and red marriages have extra info.)</li>
+        <li>For a married couple, click on one member's '-' sign to see only their side of the family.</li>
+        <li>Drag and drop family members. Scroll and zoom normally.</li>
+      </ul>
+      
+    </div>
+    <div class="column">
+      
+      <div id="diagramEventsMessages" class="textbox">
+        <strong><p id = "diagramEventsMsgHeader" style></p></strong>
+        <p id = "diagramEventsMsgMsg"></p>
+      </div>
+
+      </div>
+  </div>
+
+
+
 
 </div>
 </body>

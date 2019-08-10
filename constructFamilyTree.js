@@ -85,7 +85,7 @@ switch(fam) {
           var to = pair[1];            
           if (theyAreMarried(from, to)) {
               if (part.data.hasOwnProperty("info")) {
-                  head = "Info for marriage between "+from.n+" and "+to.n+":";
+                  head = "Info for marriage between "+from.n+" and "+to.n;
                   msg = part.data.info;
               } else {
                   msg = "No additional info for marriage between "+from.n+" and "+to.n+".";
@@ -95,7 +95,7 @@ switch(fam) {
 
         else { // if node
           if (part.data.hasOwnProperty("info")) {
-            head = "Info:";
+            head = "Info for "+part.data.n;
             msg = part.data.info;
           } else {
             msg = "No additional info on this person.";

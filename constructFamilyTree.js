@@ -20,15 +20,15 @@ function init(fam=null, firsttime=true) {
 
     // instructions
 
-  if (GetURLParameter('info')=='true' || GetURLParameter('info')=='yes') {
-      setTimeout(function() { alert(    // asynchronous?
-          "INSTRUCTIONS:" + "\n" +
-          "Click on a name or marriage link to see extra info." + "\n" + 
-          "(Light blue people and red marriages have extra info.)" + "\n" +
-          "For a married couple, click on one member's '-' sign to see only their side of the family." + "\n" + 
-          "Drag and drop family members. Scroll and zoom normally."
-      ); }, 1); // 1 ms
-  }
+//   if (GetURLParameter('info')=='true' || GetURLParameter('info')=='yes') {
+//       setTimeout(function() { alert(    // asynchronous?
+//           "INSTRUCTIONS:" + "\n" +
+//           "Click on a name or marriage link to see extra info." + "\n" + 
+//           "(Light blue people and red marriages have extra info.)" + "\n" +
+//           "For a married couple, click on one member's '-' sign to see only their side of the family." + "\n" + 
+//           "Drag and drop family members. Scroll and zoom normally."
+//       ); }, 1); // 1 ms
+//   }
 
   // specify a family
 
@@ -345,8 +345,13 @@ $(go.Diagram, "myDiagramDiv",
 
     setupDiagram(myDiagram, familyInfo);
 
+    // myDiagram.minScale is by default equal to 0.0001
 
-
+    myDiagram.minScale = 0.0005;
+    myDiagram.maxScale = 3.5;
+    // in ZoomSlider.js I should maybe change
+    // zoomRangeInput.max 
+  
 
     
     myDiagram.zoomslider = new ZoomSlider(myDiagram, {
@@ -397,19 +402,6 @@ $(go.Diagram, "myDiagramDiv",
 
     var model = diagram.model;
     var nodeDataArray = model.nodeDataArray;
-
-    // for (var i = 0; i < nodeDataArray.length; i++) {
-    //   var data = nodeDataArray[i];
-    //   var key = data.key;
-    //   var uxs = data.ux;
-    //   if (uxs !== undefined) {
-    //     if (typeof uxs === "number" || typeof uxs === "string") uxs = [uxs];
-    //     uxs.forEach(function (sp_key) {
-    //       var sp = nodeDataArray.filter(p => sp_key==p.key)[0];
-    //       if (!sp.hasOwnProperty('ux')) sp.ux=[];
-    //       if (typeof sp.ux === "number" || typeof sp.ux === "string") sp.ux = [sp.ux];
-    //       });
-    // }
 
     for (var i = 0; i < nodeDataArray.length; i++) {
       var data = nodeDataArray[i];
@@ -718,3 +710,12 @@ $(go.Diagram, "myDiagramDiv",
     init(family, firsttime=false);
   }
   // end GenogramLayout class
+
+  function repositionSlider() {
+    myDiagram.zoomslider.remove();
+    myDiagram.zoomslider = new ZoomSlider(myDiagram, {
+        //   alignment: go.Spot.BottomRight, alignmentFocus: go.Spot.BottomRight,
+          alignment: go.Spot.TopRight, alignmentFocus: go.Spot.TopRight, 
+          size: 150, buttonSize: 30, orientation: 'horizontal'
+        });    
+  }

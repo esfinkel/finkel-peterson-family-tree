@@ -62,15 +62,18 @@ h1 {
   padding: 20px;
   margin: 20px;
   min-height: 100px;
+  box-shadow: 5px 10px #888888;
   background: #F8F8FF;
 }
 
 .current-family {
+  box-shadow: 5px 10px #888888;
   margin-left: auto;
   margin-right: auto;
   padding: 10px 20px;
   border-radius: 10px;
   margin-bottom: 10px;
+  font-weight: bold;
   font-family: 'Apple Chancery', sans-serif;
   background-color: #F8F8FF;
   background-image: url(https://img.freepik.com/free-photo/watercolor-paper-texture_1194-5416.jpg?size=626&ext=jpg);

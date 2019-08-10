@@ -18,286 +18,277 @@ function GetURLParameter(sParam) {
   
 function init(fam=null, firsttime=true) {
 
-    // instructions
+  // instructions
 
-//   if (GetURLParameter('info')=='true' || GetURLParameter('info')=='yes') {
-//       setTimeout(function() { alert(    // asynchronous?
-//           "INSTRUCTIONS:" + "\n" +
-//           "Click on a name or marriage link to see extra info." + "\n" + 
-//           "(Light blue people and red marriages have extra info.)" + "\n" +
-//           "For a married couple, click on one member's '-' sign to see only their side of the family." + "\n" + 
-//           "Drag and drop family members. Scroll and zoom normally."
-//       ); }, 1); // 1 ms
-//   }
+  // if (GetURLParameter('info')=='true' || GetURLParameter('info')=='yes') {
+  //     setTimeout(function() { alert(    // asynchronous?
+  //         "INSTRUCTIONS:" + "\n" +
+  //         "Click on a name or marriage link to see extra info." + "\n" + 
+  //         "(Light blue people and red marriages have extra info.)" + "\n" +
+  //         "For a married couple, click on one member's '-' sign to see only their side of the family." + "\n" + 
+  //         "Drag and drop family members. Scroll and zoom normally."
+  //     ); }, 1); // 1 ms
+  // }
 
   // specify a family
 
-if (fam==null) fam = GetURLParameter('family');
-switch(fam) {
-  case 'finkel': var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels); document.getElementById("current-family-name").textContent='Finkels'; break;
-  case 'patyk': var familyInfo = PatykFinkels.concat(Patyks); document.getElementById("current-family-name").textContent='Patyks'; break;
-  case 'peterson': var familyInfo = FinkelPetersons.concat(Petersons); document.getElementById("current-family-name").textContent='Petersons'; break;
-  default: var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks).concat(Petersons); document.getElementById("current-family-name").textContent='All'; break;
-};
+  if (fam==null) fam = GetURLParameter('family');
+  switch(fam) {
+    case 'finkel': var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels); document.getElementById("current-family-name").textContent='Finkels'; break;
+    case 'patyk': var familyInfo = PatykFinkels.concat(Patyks); document.getElementById("current-family-name").textContent='Patyks'; break;
+    case 'peterson': var familyInfo = FinkelPetersons.concat(Petersons); document.getElementById("current-family-name").textContent='Petersons'; break;
+    default: var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks).concat(Petersons); document.getElementById("current-family-name").textContent='All'; break;
+  };
 
     // make diagram
 
-var $ = go.GraphObject.make;
-myDiagram =
-$(go.Diagram, "myDiagramDiv",
-{
+  var $ = go.GraphObject.make;
+  myDiagram = $(go.Diagram, "myDiagramDiv", {
     initialAutoScale: go.Diagram.Uniform,
-    
-
     "undoManager.isEnabled": true,
     // when a node is selected, draw a big yellow circle behind it  // handle clicking/highlighting
     nodeSelectionAdornmentTemplate:
-    $(go.Adornment, "Auto",
+      $(go.Adornment, "Auto",
       { layerName: "Grid" },  // the predefined layer that is behind everything else
       $(go.Shape, "Circle", { fill: "yellow", stroke: null }),
       $(go.Placeholder)
       ),
       layout:  // use a custom layout, defined below
       $(GenogramLayout, { direction: 90, layerSpacing: 50, columnSpacing: 10, aggressiveOption: go.LayeredDigraphLayout.AggressiveMore,})// layeringOption: go.LayeredDigraphLayout.LayerOptimalLinkLength}) // last 2 don't seem to do anything
-    });
+  });
     
     
-    // displace user info
+  // displace user info
+  
+  function showMessage(h, m, url=[]) {
+    document.getElementById("diagramEventsMsgHeader").textContent = h;
+    document.getElementById("diagramEventsMsgMsg").textContent = m;
     
-    function showMessage(h, m, url=[]) {
-      document.getElementById("diagramEventsMsgHeader").textContent = h;
-      document.getElementById("diagramEventsMsgMsg").textContent = m;
-      
-      if (url.length>1) {
-          document.getElementById("diagramEventsLink").textContent = url[0];
-          document.getElementById("diagramEventsLink").setAttribute('href', url[1]);
-        } else {
-            document.getElementById("diagramEventsLink").textContent = "";
-            document.getElementById("diagramEventsLink").setAttribute('href', "");
-    
-      }
+    if (url.length>1) {
+      document.getElementById("diagramEventsLink").textContent = url[0];
+      document.getElementById("diagramEventsLink").setAttribute('href', url[1]);
+    } else {
+      document.getElementById("diagramEventsLink").textContent = "";
+      document.getElementById("diagramEventsLink").setAttribute('href', "");  
     }
+  }
     
-    function theyAreMarried(s1, s2) {
-      return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
-    }
+  function theyAreMarried(s1, s2) {
+    return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
+  }
     
 
 
-    myDiagram.addDiagramListener("ObjectSingleClicked",
-      function(e) { 
-        var part = e.subject.part;
-    
-        var head = "";
-        var msg = "";
-        var url = [];
-    
-        if (part instanceof go.Link) {
-          const pair = familyInfo.filter(d => d.key==part.fromNode.key || d.key==part.toNode.key);
-          var from = pair[0];
-          var to = pair[1];            
-          if (theyAreMarried(from, to)) {
-              name1 = from.n!="" ? from.n : "UNKNOWN"
-              name2 = to.n!="" ? to.n : "UNKNOWN"
-              if (part.data.hasOwnProperty("info")) {
-                  head = "Info for marriage between "+name1+" and "+name2;
-                  msg = part.data.info;
-              } else {
-                  msg = "No additional info for marriage between "+name1+" and "+name2+".";
-              }
-          }
-        }
-    
-        else { // if node
+  myDiagram.addDiagramListener("ObjectSingleClicked",
+    function(e) { 
+      var part = e.subject.part;
+  
+      var head = "";
+      var msg = "";
+      var url = [];
+  
+      if (part instanceof go.Link) {
+        const pair = familyInfo.filter(d => d.key==part.fromNode.key || d.key==part.toNode.key);
+        var from = pair[0];
+        var to = pair[1];
+        if (theyAreMarried(from, to)) {
+          name1 = from.n!="" ? from.n : "UNKNOWN"
+          name2 = to.n!="" ? to.n : "UNKNOWN"
           if (part.data.hasOwnProperty("info")) {
-            head = "Info for "+part.data.n;
+            head = "Info for marriage between "+name1+" and "+name2;
             msg = part.data.info;
-            if (part.data.key==-47) url = ["So much detail", "https://goo.gl/UZaHn5"]; // hardcoded methods for a few keys 
           } else {
-            msg = "No additional info on this person.";
+            msg = "No additional info for marriage between "+name1+" and "+name2+".";
           }
         }
-    
-        showMessage(head, msg, url);
-      
-    }); 
-    
-    // allow message to disappear when item is deselected 
-    myDiagram.addDiagramListener("BackgroundSingleClicked",
-      function(e) {
-        showMessage("", "");
-    }); 
-    myDiagram.addDiagramListener("BackgroundDoubleClicked",
-      function(e) {
-        showMessage("", "");
-    }); 
-    myDiagram.addDiagramListener("BackgroundContextClicked",
-      function(e) {
-        showMessage("", "");
-    }); 
-    
-    
-    
-
-
-
-
-    
-// make a better isTreeLeaf. if is someone's spouse, is not a leaf
-// collapse everyone except the people above you and their descendents
-// collect:
-// if node is not start:
-// make node invisible
-// x = list of spouses
-// y = list of children
-// z = []
-// if node is not start: z gets parents
-// z = list of parents
-// 
-// for p in (x+y+z):
-// if p is visible and p is not start:
-// collapse(p)
-
-    function findAllSpouses(p) {
-      return familyInfo.filter(d => d.ux==p.key || d.key==p.ux);
-    }
-
-    // function findAllSpousesKey(p_key) {
-    //   return findAllSpouses(getNode(p_key));
-    // }
-
-    function findAllChildren(p) {
-      return familyInfo.filter(d => d.p1==p.key || d.p2==p.key);
-    }
-
-    function aHasSpouseb(a, b) {
-      if (a.hasOwnProperty('ux') && a.ux==b.key) return true;
-      if (b.hasOwnProperty('ux') && b.ux==a.key) return true;
-      return false;
-    }
-
-    function aHasParentb(a, b) {
-      if (! a.hasOwnProperty('p1')) return false;
-      return a.p1==b.key || a.p2==b.key;
-    }
-
-    function collapseFrom(node, start) {
-      if (node.data.isCollapsed) return;
-
-      // if (node==start) {node.diagram.model.setDataProperty(node.data, "visible", false); node.diagram.model.setDataProperty(node.data, "isCollapsed", true);}
-
-      node.diagram.model.setDataProperty(node.data, "sign", 'p');
-
-
-      if (node !== start) {
-          node.diagram.model.setDataProperty(node.data, "isCollapsed", true);
-          node.diagram.model.setDataProperty(node.data, "visible", false);
-      } else {
-          // var opos = node.diagram.transformDocToView(node.getDocumentPoint(go.Spot.Center));
+      } else { // if node
+        if (part.data.hasOwnProperty("info")) {
+          head = "Info for "+part.data.n;
+          msg = part.data.info;
+          if (part.data.key==-47) url = ["So much detail", "https://goo.gl/UZaHn5"]; // hardcoded methods for a few keys 
+        } else {
+          msg = "No additional info on this person.";
+        }
       }
-      var thisNodeData = node.data;
-      var x = findAllSpouses(thisNodeData);
-      var y = findAllChildren(thisNodeData);
-      var z = [];
-      if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
+  
+      showMessage(head, msg, url);  
+    }
+  ); 
+  
+  // allow message to disappear when item is deselected 
+  myDiagram.addDiagramListener("BackgroundSingleClicked",
+    function(e) {
+      showMessage("", "");
+  }); 
+  myDiagram.addDiagramListener("BackgroundDoubleClicked",
+    function(e) {
+      showMessage("", "");
+  }); 
+  myDiagram.addDiagramListener("BackgroundContextClicked",
+    function(e) {
+      showMessage("", "");
+  }); 
+  
+  
+  
 
-      var toCollapse = [];
-      x.concat(y).forEach(p => toCollapse.push(p.key));
-      z.forEach(p => toCollapse.push(p));
-      toCollapse.forEach(p => {var pno = node.diagram.findNodeForKey(p); if (pno!==null && pno!==start) collapseFrom(pno, start);});  // if pno!==null && not start
 
-      if (node==start) {
-          node.diagram.layout.updateParts();
-      }
 
+
+    
+  // make a better isTreeLeaf. if is someone's spouse, is not a leaf
+  // collapse everyone except the people above you and their descendents
+  // collect:
+  // if node is not start:
+  // make node invisible
+  // x = list of spouses
+  // y = list of children
+  // z = []
+  // if node is not start: z gets parents
+  // z = list of parents
+  // 
+  // for p in (x+y+z):
+  // if p is visible and p is not start:
+  // collapse(p)
+
+  function findAllSpouses(p) {
+    return familyInfo.filter(d => d.ux==p.key || d.key==p.ux);
+  }
+
+  // function findAllSpousesKey(p_key) {
+  //   return findAllSpouses(getNode(p_key));
+  // }
+
+  function findAllChildren(p) {
+    return familyInfo.filter(d => d.p1==p.key || d.p2==p.key);
+  }
+
+  // function aHasSpouseb(a, b) {
+  //   if (a.hasOwnProperty('ux') && a.ux==b.key) return true;
+  //   if (b.hasOwnProperty('ux') && b.ux==a.key) return true;
+  //   return false;
+  // }
+
+  // function aHasParentb(a, b) {
+  //   if (! a.hasOwnProperty('p1')) return false;
+  //   return a.p1==b.key || a.p2==b.key;
+  // }
+
+  function collapseFrom(node, start) {
+    if (node.data.isCollapsed) return;
+
+    // if (node==start) {node.diagram.model.setDataProperty(node.data, "visible", false); node.diagram.model.setDataProperty(node.data, "isCollapsed", true);}
+
+    node.diagram.model.setDataProperty(node.data, "sign", 'p');
+
+
+    if (node !== start) {
+        node.diagram.model.setDataProperty(node.data, "isCollapsed", true);
+        node.diagram.model.setDataProperty(node.data, "visible", false);
+    } else {
+        // var opos = node.diagram.transformDocToView(node.getDocumentPoint(go.Spot.Center));
+    }
+    var thisNodeData = node.data;
+    var x = findAllSpouses(thisNodeData);
+    var y = findAllChildren(thisNodeData);
+    var z = [];
+    if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
+
+    var toCollapse = [];
+    x.concat(y).forEach(p => toCollapse.push(p.key));
+    z.forEach(p => toCollapse.push(p));
+    toCollapse.forEach(p => {var pno = node.diagram.findNodeForKey(p); if (pno!==null && pno!==start) collapseFrom(pno, start);});  // if pno!==null && not start
+
+    if (node==start) {
+        node.diagram.layout.updateParts();
     }
 
-    function expandFrom(node, start) {
-      if (node!==start && !node.data.isCollapsed) return;
-      node.diagram.model.setDataProperty(node.data, "sign", 'm');
-      if (node !== start) {
-          node.diagram.model.setDataProperty(node.data, "isCollapsed", false);
-          node.diagram.model.setDataProperty(node.data, "visible", true);
-      }
-      var thisNodeData = node.data;
-      var x = findAllSpouses(thisNodeData);
-      var y = findAllChildren(thisNodeData);
-      var z = [];
-      if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
+  }
 
-      var toExpand = [];
-      x.concat(y).forEach(p => toExpand.push(p.key));
-      z.forEach(p => toExpand.push(p));
-      toExpand.forEach(p => {var pno = node.diagram.findNodeForKey(p); if (pno!==null && pno!==start) expandFrom(pno, start);});  // if pno!==null && not start
-
-      // node.findNodesOutOf().each(expandFrom);
+  function expandFrom(node, start) {
+    if (node!==start && !node.data.isCollapsed) return;
+    node.diagram.model.setDataProperty(node.data, "sign", 'm');
+    if (node !== start) {
+        node.diagram.model.setDataProperty(node.data, "isCollapsed", false);
+        node.diagram.model.setDataProperty(node.data, "visible", true);
     }
+    var thisNodeData = node.data;
+    var x = findAllSpouses(thisNodeData);
+    var y = findAllChildren(thisNodeData);
+    var z = [];
+    if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
 
-    function getP(key) {
-      var persons = familyInfo.filter(d => d.key==key);
-      if (persons.length==0) return null;
-      return persons[0];
-    }
+    var toExpand = [];
+    x.concat(y).forEach(p => toExpand.push(p.key));
+    z.forEach(p => toExpand.push(p));
+    toExpand.forEach(p => {var pno = node.diagram.findNodeForKey(p); if (pno!==null && pno!==start) expandFrom(pno, start);});  // if pno!==null && not start
+
+    // node.findNodesOutOf().each(expandFrom);
+  }
+
+  // function getP(key) {
+  //   var persons = familyInfo.filter(d => d.key==key);
+  //   if (persons.length==0) return null;
+  //   return persons[0];
+  // }
 
 
   var hasSpouse = [];
   familyInfo.forEach(m => {m.sign = 'm'; if (!hasSpouse.includes(m.key) && m.hasOwnProperty("ux")) {hasSpouse.push(m.key); hasSpouse.push(m.ux)}});
-    function shouldHaveButton(node_key) {
-      // if you have a spouse and children
-      // if you have children, you have a spouse
-      // so just check for a spouse
-      return hasSpouse.includes(node_key);
-      // return true;
-    }
+  function shouldHaveButton(node_key) {
+    // if you have a spouse and children
+    // if you have children, you have a spouse
+    // so just check for a spouse
+    return hasSpouse.includes(node_key);
+  }
 
 
 
-    function addTemplate(diagm, gend, node_shape) {
-      diagm.nodeTemplateMap.add(gend,
-      $(go.Node, "Vertical",
-        { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
-        new go.Binding("visible"), 
-        $(go.Panel,
-          { name: "ICON" },
-          $(go.Shape, node_shape,
-            { width: 40, height: 40, strokeWidth: 2, fill: "#F0FFF0", portId: "" },
-            new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
-            ),
+  function addTemplate(diagm, gend, node_shape) {
+    diagm.nodeTemplateMap.add(gend,
+    $(go.Node, "Vertical",
+      { locationSpot: go.Spot.Center, locationObjectName: "ICON" },
+      new go.Binding("visible"), 
+      $(go.Panel,
+        { name: "ICON" },
+        $(go.Shape, node_shape,
+          { width: 40, height: 40, strokeWidth: 2, fill: "#F0FFF0", portId: "" },
+          new go.Binding("fill", "info", function (i) {return i.length>3 ? "lightblue" : "white"}),
         ),
-        $(go.TextBlock,
-          { textAlign: "center", maxSize: new go.Size(100, NaN), font: "14pt sans-serif" },
-          new go.Binding("text", "n")),
+      ),
+      $(go.TextBlock,
+        { textAlign: "center", maxSize: new go.Size(100, NaN), font: "14pt sans-serif" },
+        new go.Binding("text", "n")),
 
       $("Button",  // a replacement for "TreeExpanderButton" that works for non-tree-structured graphs
-          // assume initially not visible because there are no links coming out
-          { visible: false },
-          // bind the button visibility to whether it's not a leaf node
-          new go.Binding("visible", "key", shouldHaveButton)
-            .ofObject(),
-          $(go.Shape,
-            {
-              name: "ButtonIcon",
-              figure: "MinusLine",
-              desiredSize: new go.Size(6, 6)
-            },
-            new go.Binding("figure", "sign",  // data.isCollapsed remembers "collapsed" or "expanded"
-              function(s) { return s!='m' ? "PlusLine" : "MinusLine"; })),
+        // assume initially not visible because there are no links coming out
+        { visible: false },
+        // bind the button visibility to whether it's not a leaf node
+        new go.Binding("visible", "key", shouldHaveButton)
+          .ofObject(),
+        $(go.Shape,
           {
-            click: function(e, obj) {
-              e.diagram.startTransaction();
-              var node = obj.part;
-              if (node.data.sign=='p') {
-                expandFrom(node, node);
-              } else {
-                collapseFrom(node, node);
-              }
-              e.diagram.commitTransaction("toggled visibility of dependencies");
+            name: "ButtonIcon",
+            figure: "MinusLine",
+            desiredSize: new go.Size(6, 6)
+          },
+          new go.Binding("figure", "sign",  // data.isCollapsed remembers "collapsed" or "expanded"
+            function(s) { return s!='m' ? "PlusLine" : "MinusLine"; })),
+        {
+          click: function(e, obj) {
+            e.diagram.startTransaction();
+            var node = obj.part;
+            if (node.data.sign=='p') {
+              expandFrom(node, node);
+            } else {
+              collapseFrom(node, node);
             }
-          })
-      
-      ),
-      );
-    }
+            e.diagram.commitTransaction("toggled visibility of dependencies");
+          }
+        })
+    ),
+    );
+  }
 
 
 
@@ -305,9 +296,9 @@ $(go.Diagram, "myDiagramDiv",
 
   addTemplate(myDiagram, "F", "Triangle");
 
-    addTemplate(myDiagram, "X", "Diamond");
+  addTemplate(myDiagram, "X", "Diamond");
 
-    addTemplate(myDiagram, "P", "Circle")
+  addTemplate(myDiagram, "P", "Circle")
 
 
 

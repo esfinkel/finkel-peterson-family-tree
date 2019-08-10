@@ -29,15 +29,16 @@
     <span class="current-family">Current family: <span id="current-family-name">Text</span></span>
 
     <form target="_blank" action="https://forms.gle/6bpb4cXdFc5j4zcm8">
-      <button class="btn" type="submit">Request addition/modification of data</button>
+      <button class="btn" type="submit">Add/modify data</button>
     </form>  
-    <button class="btn" value="Refresh Page" onClick="window.location.reload();">Refresh page</button>
+    <button class="btn" onClick="window.location.reload();">Refresh page</button>
   </div>
 
   <p></p>
 
   <div style="position: relative; display: flex; flex-flow: row wrap;">
-    <div id="myDiagramDiv"></div> 
+    <!-- <div id="myDiagramDiv" class="floating-paper"></div>  -->
+    <div id="myDiagramDiv" class="beveled">hjgvjgvhvftjfj</div> 
   </div>
   <!-- E6E6FA    border: solid 2px black;  -->
   
@@ -54,14 +55,16 @@
         </div>        
       </div>
 
-      <div class="column">
+      <!-- <div class="column floating-paper"> -->
+      <div class="column beveled instructions">
         <h2 style="text-align: center;">Instructions</h2>
         <ul>
           <li>Click on a name or marriage link to see extra info!</li>
-          <li style="padding: 5px 0px;"><span style="background: lightblue; padding: 3px;">Light blue people</span> and <span style="background: rgba(255, 112, 112, 0.836); padding: 3px;">red marriages</span> have extra info.)</li>
+          <li style="padding: 5px 0px;">(<span style="background: lightblue; padding: 3px;">Light blue people</span> and <span style="background: rgba(255, 112, 112, 0.836); padding: 3px;">red marriages</span> have extra info.)</li>
           <li>If someone is married, click on their '-' sign to see only their side of the family.</li>
           <li>Drag and drop family members. Scroll and zoom with zoom-slider, mouse, or arrow keys.</li>
         </ul>
+        <!-- <p></p> -->
       </div>
   </div>
 

@@ -16,7 +16,7 @@ function GetURLParameter(sParam) {
 }
 
   
-function init(fam=null) {
+function init(fam=null, firsttime=true) {
 
     // instructions
 
@@ -82,7 +82,8 @@ $(go.Diagram, "myDiagramDiv",
       return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
     }
     
-    
+
+
     myDiagram.addDiagramListener("ObjectSingleClicked",
       function(e) { 
         var part = e.subject.part;
@@ -264,7 +265,7 @@ $(go.Diagram, "myDiagramDiv",
             ),
         ),
         $(go.TextBlock,
-          { textAlign: "center", maxSize: new go.Size(80, NaN) },
+          { textAlign: "center", maxSize: new go.Size(100, NaN), font: "14pt sans-serif" },
           new go.Binding("text", "n")),
 
       $("Button",  // a replacement for "TreeExpanderButton" that works for non-tree-structured graphs
@@ -343,6 +344,18 @@ $(go.Diagram, "myDiagramDiv",
       ));
 
     setupDiagram(myDiagram, familyInfo);
+
+
+
+
+    
+    myDiagram.zoomslider = new ZoomSlider(myDiagram, {
+        //   alignment: go.Spot.BottomRight, alignmentFocus: go.Spot.BottomRight,
+          alignment: go.Spot.TopLeft, alignmentFocus: go.Spot.TopLeft,
+          size: 150, buttonSize: 30, orientation: 'vertical'
+        });
+    
+
 
   }
   
@@ -697,9 +710,11 @@ $(go.Diagram, "myDiagramDiv",
 
 
 
+
   function replaceDiagram(family=null) {
+    myDiagram.zoomslider.remove();
     myDiagram.div = null;
     myDiagram = null;
-    init(family);
+    init(family, firsttime=false);
   }
   // end GenogramLayout class

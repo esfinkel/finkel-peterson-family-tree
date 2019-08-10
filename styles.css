@@ -21,8 +21,9 @@ h1 {
 }
 
 #myDiagramDiv {
-  width:100%;
+  width:90%;
   height:400px;
+  margin: 10px;
   /* resize: vertical;
   overflow: scroll;
   bottom: 14px; */

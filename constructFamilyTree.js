@@ -96,11 +96,13 @@ $(go.Diagram, "myDiagramDiv",
           var from = pair[0];
           var to = pair[1];            
           if (theyAreMarried(from, to)) {
+              name1 = from.n!="" ? from.n : "UNKNOWN"
+              name2 = to.n!="" ? to.n : "UNKNOWN"
               if (part.data.hasOwnProperty("info")) {
-                  head = "Info for marriage between "+from.n+" and "+to.n;
+                  head = "Info for marriage between "+name1+" and "+name2;
                   msg = part.data.info;
               } else {
-                  msg = "No additional info for marriage between "+from.n+" and "+to.n+".";
+                  msg = "No additional info for marriage between "+name1+" and "+name2+".";
               }
           }
         }

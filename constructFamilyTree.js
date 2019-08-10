@@ -18,7 +18,7 @@ function GetURLParameter(sParam) {
   
 function init(fam=null) {
 
-
+    // instructions
 
   if (GetURLParameter('info')=='true' || GetURLParameter('info')=='yes') {
       setTimeout(function() { alert(    // asynchronous?
@@ -27,8 +27,10 @@ function init(fam=null) {
           "(Light blue people and red marriages have extra info.)" + "\n" +
           "For a married couple, click on one member's '-' sign to see only their side of the family." + "\n" + 
           "Drag and drop family members. Scroll and zoom normally."
-      ); }, 1);
+      ); }, 1); // 1 ms
   }
+
+  // specify a family
 
 if (fam==null) fam = GetURLParameter('family')
 switch(fam) {
@@ -38,18 +40,19 @@ switch(fam) {
   default: var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks).concat(Petersons); break;
 };
 
+    // make diagram
 
-    var $ = go.GraphObject.make;
-    myDiagram =
-    $(go.Diagram, "myDiagramDiv",
-    {
-      initialAutoScale: go.Diagram.Uniform,
+var $ = go.GraphObject.make;
+myDiagram =
+$(go.Diagram, "myDiagramDiv",
+{
+    initialAutoScale: go.Diagram.Uniform,
+    
 
-
-      "undoManager.isEnabled": true,
-      // when a node is selected, draw a big yellow circle behind it  // handle clicking/highlighting
-      nodeSelectionAdornmentTemplate:
-      $(go.Adornment, "Auto",
+    "undoManager.isEnabled": true,
+    // when a node is selected, draw a big yellow circle behind it  // handle clicking/highlighting
+    nodeSelectionAdornmentTemplate:
+    $(go.Adornment, "Auto",
       { layerName: "Grid" },  // the predefined layer that is behind everything else
       $(go.Shape, "Circle", { fill: "yellow", stroke: null }),
       $(go.Placeholder)
@@ -58,27 +61,36 @@ switch(fam) {
       $(GenogramLayout, { direction: 90, layerSpacing: 50, columnSpacing: 10, aggressiveOption: go.LayeredDigraphLayout.AggressiveMore,})// layeringOption: go.LayeredDigraphLayout.LayerOptimalLinkLength}) // last 2 don't seem to do anything
     });
     
-
-
-
-
-    function showMessage(h, m) {
+    
+    // displace user info
+    
+    function showMessage(h, m, url=[]) {
       document.getElementById("diagramEventsMsgHeader").textContent = h;
       document.getElementById("diagramEventsMsgMsg").textContent = m;
+      
+      if (url.length>1) {
+          document.getElementById("diagramEventsLink").textContent = url[0];
+          document.getElementById("diagramEventsLink").setAttribute('href', url[1]);
+        } else {
+            document.getElementById("diagramEventsLink").textContent = "";
+            document.getElementById("diagramEventsLink").setAttribute('href', "");
+    
+      }
     }
     
     function theyAreMarried(s1, s2) {
       return (s1.hasOwnProperty('ux') && s1.ux==s2.key) || (s2.hasOwnProperty('ux') && s2.ux==s1.key);
     }
-
-
+    
+    
     myDiagram.addDiagramListener("ObjectSingleClicked",
       function(e) { 
         var part = e.subject.part;
-
+    
         var head = "";
         var msg = "";
-
+        var url = [];
+    
         if (part instanceof go.Link) {
           const pair = familyInfo.filter(d => d.key==part.fromNode.key || d.key==part.toNode.key);
           var from = pair[0];
@@ -92,17 +104,18 @@ switch(fam) {
               }
           }
         }
-
+    
         else { // if node
           if (part.data.hasOwnProperty("info")) {
             head = "Info for "+part.data.n;
             msg = part.data.info;
+            if (part.data.key==-47) url = ["So much detail", "https://goo.gl/UZaHn5"]; // hardcoded methods for a few keys 
           } else {
             msg = "No additional info on this person.";
           }
         }
-
-        showMessage(head, msg);
+    
+        showMessage(head, msg, url);
       
     }); 
     
@@ -119,11 +132,9 @@ switch(fam) {
       function(e) {
         showMessage("", "");
     }); 
-
-
     
-
-
+    
+    
 
 
 

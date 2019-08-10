@@ -1,12 +1,19 @@
 marriagesInfo = [{sA: 2, sB: 3, info: "married in 1900"}];
 
+
+
 // key needs to be different number for each person
 // n = name (must be in double quotes)
 // s (sex/gender) is either "M" or "F"
 // p1 is parent1 (should be that person's key)
 // p2 is parent2
 // ux is spouse's key
-// n: name, s: gender, p1: parent1, p2: parent2, ux: spouse, a: attributes/markers
+// n: name, s: gender, p1: parent1, p2: parent2, ux: spouse, info: information
+
+
+
+
+
 // FINKEL PETERSONS
 
 var FinkelPetersons = [
@@ -300,7 +307,7 @@ var Petersons = [
 { key: -44, n: "Lydia J (nee Harris)", s: "F", ux: -43, info: "b. 1810" },
 { key: -45, n: "Betsey (nee Veazay)", s: "F", ux: -46, info: "(sp?) b 1775. d ?" },
 { key: -46, n: "Abiel Walker", s: "M", p1: -47, p2: -48, ux: -45, info: "B 1768, Andover, Mass. D 1838, Westmoreland, NH" },
-{ key: -47, n: "Benjamin Walker III (the soldier)", s: "M", p1: -49, p2: -50, ux: -48, info: "B 6 Oct 1741 Billerica, MA. D 15 Aug 1775 Boston jail. So much detail: https://goo.gl/UZaHn5" },
+{ key: -47, n: "Benjamin Walker III (the soldier)", s: "M", p1: -49, p2: -50, ux: -48, info: "B 6 Oct 1741 Billerica, MA. D 15 Aug 1775 Boston jail." }, // url hardcoded in click method
 { key: "-47x", n: "William", s: "M", p1: -49, p2: -50, info: "b 22 Mar 1742." },
 { key: "-47y", n: "Hannah", s: "F", p1: -49, p2: -50, info: "b 26 Mar 1745" },
 { key: "-47z", n: "Susanna", s: "F", p1: -49, p2: -50, info: "21 Mar 1745 - 22 Dec 1821" },

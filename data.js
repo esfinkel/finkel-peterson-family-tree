@@ -12,8 +12,11 @@ marriagesInfo = [
     { sA: -29, sB: -30, info: "\"According to family lore, Esther and Joseph were married at 16 and left their homes and families to come to America, we think they boarded a ship in England but don't know how they got there. Other members of their family were reported to have gone to Chicago and South Africa.\" -Fran Finkel" },
     {sA: -1, sB: -28, info: "married on March 11 1936"},
     {sA: -34, sB: -35, info: "married and came to the US in 1906"},
+    { sA: -51, sB: -54, info: "Their marriage caused some conflict in her family because he was protestant and she catholic.\n\nWent to a cottage in Indiana in the summers in the (19)50s or so" },
+    { sA: -52, sB: -53, info: "Their marriage was arranged, - set up by Catherine's mother. They moved to the US at some point after marrying." },
  
  ];
+ 
  
 
 
@@ -170,7 +173,7 @@ var Finkels = [
     { key: -2, n: "Louis", s: "M", p1: -3, p2: -4, ux: -7, info: "Louis Richman.\n\"born in 1887 in Akkerman, (Ackamann) Russia , came to America on a ship called \"Haverford\" from Bremen , Germany in 1906\" - Fran Finkel\nProbably spoke Yiddish; probably emigrated because of pogroms" },
     { key: -7, n: "Sara(h)", s: "F", p1: -8, p2: -9, ux: -2, info: "Probably spoke Yiddish; probably emigrated 1900-1908 because of pogroms" },
     { key: -3, n: "Isadore Rochman", s: "M", ux: -4, info: "Ize; \"born in 1845 in Ochumunn, Russia. He married in 1865 and died in 1890 and was a jeweler\" - fran" },
-    { key: -4, n: "Dora (nee Sabilinsky)", s: "M", p1: -5, p2: -6, ux: -3 },
+    { key: -4, n: "Dora (Sabilinsky)", s: "M", p1: -5, p2: -6, ux: -3 },
     { key: -5, n: "Goldie Kriv", s: "F", ux: -6, info: "1830-1895; probably born Ochumunn, Russia" },
     { key: -6, n: "Mushie Sabilinsky", s: "M", ux: -5, info: "born 1829 - Ochumann, Russia" },
     
@@ -292,7 +295,7 @@ var Petersons = [
     // Peterson
     
     { key: 28,  n: "Rosalind", s: "F", p1: -51, p2: -54, ux: 29, info: "or \"sis\". born in Muncie, Indiana on October 25, 1939. Lives in Illinois. " },
-
+    
     
     { key: 29, n: "Dave Sr.", s: "M", p1: -37, p2: -38, ux: 28, info: "Lived in Illinois" },
     
@@ -301,28 +304,28 @@ var Petersons = [
     
     
     // Peterson/Walker family
-    { key: -37, n: "Trellis Peterson", s: "M", ux: -38, info: "\"Was from Kansas… Supervisor for Silver Cup Bread… Worked for Holsum Bread… Painted the insides of people's homes to support his family\" -R Peterson" },
+    { key: -37, n: "Trellis Peterson", s: "M", ux: -38, info: "Trellis David Peterson.\nWas from Kansas. Moved to IL at some point in his life.\n\"Supervisor for Silver Cup Bread… Worked for Holsum Bread… Painted the insides of people's homes to support his family\" -R Peterson\nHad a stepbrother Larry in Houston, TX. Very even-tempered. Lived long enough to hold Elisabeth." },
     { key: -38, n: "Lillian Walker", s: "F", p1: -39, p2: -40, ux: -37 },
     { key: -39, n: "Elizabeth Anna Lambert", s: "F", ux: -40, info: "from Canada" },
     { key: -40, n: "Arthur Robert W.", s: "M", p1: -41, p2: -42, ux: -39, info: "born 31 Dec 1877 (1878?); from illinois" },
         { key: "-40x", n: "Addie", s: "F", p1: -41, p2: -42, info: "born 1866ish" },
         { key: "-40y", n: "Alice", s: "F", p1: -41, p2: -42, info: "born 1869ish" },
         { key: "-40z", n: "William", s: "M", p1: -41, p2: -42, info: "born 1877ish" },
-    { key: -41, n: "Emma W. (nee Roberts)", s: "F", ux: -42 },
+    { key: -41, n: "Emma W. (Roberts)", s: "F", ux: -42 },
     { key: -42, n: "Henry Arthur W.", s: "M", p1: -43, p2: -44, ux: -41, info: "16 Apr 1837 to 11 July 1914\nlived for some time in Chicago;" },
     { key: "-42w", n: "George E", s: "M", p1: -43, p2: -44, info: "born ~1841" },
     { key: "-42x", n: "Lydia J", s: "F", p1: -43, p2: -44, info: "born ~1846" },
     { key: "-42y", n: "William H", s: "M", p1: -43, p2: -44, info: "born ~1832" },
     { key: "-42z", n: "Calvin B", s: "M", p1: -43, p2: -44, info: "born ~1830" },
     { key: -43, n: "Ephraim W W", s: "M", p1: -45, p2: -46, ux: -44, info: "25 Feb 1802 (NH?) - 13 Feb 1863 (Windham, VT). something is \"Oanmiston\"? can't read" },
-    { key: -44, n: "Lydia J (nee Harris)", s: "F", ux: -43, info: "b. 1810" },
-    { key: -45, n: "Betsey (nee Veazay)", s: "F", ux: -46, info: "(spelling?)\nb 1775" },
+    { key: -44, n: "Lydia J (Harris)", s: "F", ux: -43, info: "b. 1810" },
+    { key: -45, n: "Betsey (Veazay)", s: "F", ux: -46, info: "(spelling?)\nb 1775" },
     { key: -46, n: "Abiel Walker", s: "M", p1: -47, p2: -48, ux: -45, info: "B 1768, Andover, Mass\nD 1838, Westmoreland, NH" },
     { key: -47, n: "Benjamin Walker III (the soldier)", s: "M", p1: -49, p2: -50, ux: -48, info: "B 6 Oct 1741 Billerica, MA. D 15 Aug 1775 Boston jail." },
         { key: "-47x", n: "William", s: "M", p1: -49, p2: -50, info: "b 22 Mar 1742." },
         { key: "-47y", n: "Hannah", s: "F", p1: -49, p2: -50, info: "b 26 Mar 1745" },
         { key: "-47z", n: "Susanna", s: "F", p1: -49, p2: -50, info: "21 Mar 1745 - 22 Dec 1821" },
-    { key: -48, n: "Abiel (nee Abbott)", s: "F", ux: -47, info: "1745 - 1795" },
+    { key: -48, n: "Abiel (Abbott)", s: "F", ux: -47, info: "1745 - 1795" },
     { key: -49, n: "Hannah", s: "F", ux: -50 },
     { key: -50, n: "Benjamin Walker Jr.", s: "M", ux: -49, info: "Presumably there was a first Benjamin Walker" },
     
@@ -338,19 +341,25 @@ var Petersons = [
     
     // Rosalind Peterson's older relatives
         // Ingerskis
-    { key: -51, n: "Rosalie (Ingerski)", s: "F", p1: -52, p2: -53, ux: -54 },
+    { key: -51, n: "Rosalie (Ingerski)", s: "F", p1: -52, p2: -53, ux: -54, info: "Understood Polish (which her mother spoke).\nCatholic. After her marriage, her family \"turned on her\". She got along with Stella, Vic, and Florence.\nLost a set of twins." },
         { key: "-51t", n: "6 others", s: "X", p1: -52, p2: -53, info: "only 4 of whom survived" },
-        { key: "-51u", n: "Anna", s: "F", p1: -52, p2: -53 },
-        { key: "-51v", n: "Stella", s: "F", p1: -52, p2: -53 },
+        { key: "-51u", n: "Anna", s: "F", p1: -52, p2: -53, info: "one of the oldest siblings" },
+        { key: "-51v", n: "Stella", s: "F", p1: -52, p2: -53, ux: "-51vs", info: "30 years older than sister Rosalie" },
+        { key: "-51vs", n: "", s: "M", ux: "-51v" },
+        { key: "-51va", n: "\"Whitey\"", s: "M", p1: "-51v", p2: "-51vs", info: "nickname \"Whitey\". Real name unknown.\nServed on some battleship; it sunk but he was ok" },
+        { key: "-51vb", n: "two daughters", s: "F", p1: "-51v", p2: "-51vs" },
         { key: "-51w", n: "Florence", s: "F", p1: -52, p2: -53 },
-        { key: "-51x", n: "Victoria", s: "F", p1: -52, p2: -53 },
-        { key: "-51y", n: "Joe Jr.", s: "M", p1: -52, p2: -53 },
+        { key: "-51x", n: "Victoria", s: "F", p1: -52, p2: -53, info: "had a daughter Jean and son Alan" },
+        { key: "-51xs", n: "Lou Witry", s: "M", ux: "-51v", info: "Lou fought in WWI, got gassed by the Germans at one point.\nWas a Lt. in the police force" },
+        { key: "-51xa", n: "Jean", s: "F", p1: "-51x", p2: "-51xs" },
+            { key: "-51xb", n: "Alan", s: "M", p1: "-51x", p2: "-51xs" },
+        { key: "-51y", n: "Joe Jr.", s: "M", p1: -52, p2: -53, info: "Jerry, Bob, and a third boy (Joe?)" },
         { key: "-51z", n: "John", s: "M", p1: -52, p2: -53 },
-    { key: -52, n: "Catherine (Rutkowski)", s: "F", ux: -53, info: "Lived in Minuck, IL" },
-    { key: -53, n: "Joseph (?)", s: "M", ux: -52, info: "\"majordomo to a Prussian prince before coming to the United States around 1884\" - R Peterson.\nLived in Minuck, IL. \"Died in the coal mines when [Rosalie Ingerski] was three years old\" - R Peterson" },
+    { key: -52, n: "Catherine (Rutkowski)", s: "F", ux: -53, info: "From Poland; \"someplace like Krakow or Warsaw.\" Spoke Polish and only a little English. (some of?) her children, inc. Rosalie, could understand Polish.\nLived in Minuck, IL" },
+    { key: -53, n: "Joseph Engerski", s: "M", ux: -52, info: "Originally from Poland.\n\"majordomo to a Prussian prince (helped pick out his clothes and dress him) before coming to the United States around 1884\" - R Peterson.\nLived in Minuck, IL. \"Died in the coal mines when [daughter Rosalie] was three years old\" - R Peterson" },
     
-    { key: -54, n: "Edward Prentice", s: "M", p1: -56, p2: -57, info: "\"English and moved to Belfast, Ireland. came to the United States around 1889, when [he] was five years old.\" -R Peterson" },
-    { key: -55, n: "Alex", s: "X", p1: -56, p2: -57, info: "Lived in Yakima, WA" },
+    { key: -54, n: "Edward Prentice", s: "M", p1: -56, p2: -57, info: "\"English and moved to Belfast, Ireland. came to the United States around 1889, when [he] was five years old.\" -R Peterson.\nWas Protestant (belonged to church of England).\nWas a meat salesman. Worked for a distributor" },
+    { key: -55, n: "Alex", s: "X", p1: -56, p2: -57, info: "Had a office job in military during WWII. Lived in Yakima, WA" },
     { key: -56, n: "?", s: "M", ux: -57, info: "was a streetcar conductor. \"English and moved to Belfast, Ireland. came to the United States around 1889, when [Edward Prentice] was five years old.\" -R Peterson" },
     { key: -57, n: "Lily Graham", s: "F", ux: -56, info: "\"English and moved to Belfast, Ireland. came to the United States around 1889, when [Edward Prentice] was five years old. died around 1915 from appendicitis.\" -R Peterson" },
     
@@ -365,8 +374,8 @@ var Petersons = [
         { key: "-59s", n: "Rudy Wolff", s: "M", ux: -59 },
         { key: "-59a", n: "Duane", s: "M", p1: -59, p2: "-59s", info: "Dentist. Went back to Ireland; found a cousin who looks just like Edward Prentice" },
         { key: "-59b", n: "Dale", s: "M", p1: -59, p2: "-59s" },
-    { key: -60, n: "Ed", s: "M", p1: -51, p2: -54, ux: "-60s", info: "74 as of May 4 2017; lives in Powell, Mo." },
-        { key: "-60s", n: "Beverly Jones", s: "F", ux: -60 },
+    { key: -60, n: "Ed", s: "M", p1: -51, p2: -54, ux: "-60s", info: "Ed was in the Air Force, stationed in Bermuda for a while.\n74 as of May 4 2017; lives in Powell, Mo." },
+        { key: "-60s", n: "Beverly Jones", s: "F", ux: -60, info: "Her dad worked on the atom bomb plans.\nShe was a concert pianist, then a teacher. As a teacher, she'd go around the country setting up educational programs for schools" },
         { key: "-60a", n: "Jessica", s: "F", p1: -60, p2: "-60s", info: "Live in Missouri" },
         { key: "-60as", n: "", s: "M", ux: "-60a" }, // anon
             { key: "-60ac", n: "3 kids", s: "X", p1: "-60a", p2: "-60as" },

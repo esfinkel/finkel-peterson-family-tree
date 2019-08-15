@@ -14,8 +14,8 @@ marriagesInfo = [
     {sA: -34, sB: -35, info: "married and came to the US in 1906"},
     { sA: -51, sB: -54, info: "Their marriage caused some conflict in her family because he was protestant and she catholic.\n\nWent to a cottage in Indiana in the summers in the (19)50s or so" },
     { sA: -52, sB: -53, info: "Their marriage was arranged, - set up by Catherine's mother. They moved to the US at some point after marrying." },
- 
- ];
+    
+ ]; 
  
  
 
@@ -43,11 +43,11 @@ var FinkelPetersons = [
     { key: 8, n: "Maddie", s: "F", p1: 6, p2: 7, info: "Born 2002 in Chicago. Lives in Illinois" },
     { key: 9, n: "Jake", s: "M", p1: 6, p2: 7, info: "Born 2006 in Chicago. Lives in Illinois" },
     { key: "7a", n: "", s: "P", p1: 6, p2: 7, info: "Name: Luna. Species: Dog. Breed: Golden Doodle\nName: Midnight. Species: House Cat\nName: Tigris. Species: House Cat." },
-];
+    ];
     
     // PATYK-FINKELS
     
-var PatykFinkels = [
+    var PatykFinkels = [
     
     { key: 1, n: "Leo Patyk-Finkel", s: "M", p1: 2, p2: 3, info: "Born 2007, Gainesville FL. Lives in Vermont" },
     { key: 2, n: "Lynn", s: "F", p1: 16, p2: 19, ux: 3, info: "Born 1968, Elm Grove WI. Lives in Vermont, works at Dartmouth" },
@@ -55,12 +55,12 @@ var PatykFinkels = [
     { key: 4, n: "Max", s: "M", p1: 2, p2: 3, info: "Born 2000, Palo Alto CA. Studies in Colorado" },
     { key: "3a", n: "Chloe", s: "P", p1: 2, p2: 3, info: "Species: Dog. Breed: Golden Doodle" },
     
-];
+    ];
     
     // PATYKS 
     
     
-var Patyks = [
+    var Patyks = [
     
     // Anders
     
@@ -89,19 +89,20 @@ var Patyks = [
     
     {key: 19, n: "Gary" , s: "M", p1: 20, p2: 21, ux: 16 },
     {key: 59, n: "Gregory", s: "M", p1: 20, p2: 21, ux: "59a" },
-        {key: "59a", n: "", s: "F", ux: 59 }, // anon 
+        {key: "59a", n: "Donna LeDoux", s: "F", ux: 59 }, 
         {key: "59b", n: "Sean", s: "M", p1: 59, p2: "59a", ux: "59ba" },
-        {key: "59ba", n: "", s: "F", ux: "59b" }, // anon
+        {key: "59ba", n: "Jessica", s: "F", ux: "59b" }, 
+        {key: "59bb", n: "Abagail", s: "F", p1: "59b", p2: "59ba" },
     {key: 20, n: "Jean", s: "F", p1: 55, p2: 56, ux: 21 },
     {key: 21, n: "Gilbert", s: "M", ux: 20 },
     {key: 55, n: "Joseph Kapzhak", s: "M", ux: 56 },
     {key: 56, n: "Angelina Hauke", s: "F", ux: 55 },
     
-];
+    ];
     
     // FINKELS
     
-var Finkels = [
+    var Finkels = [
     
     //Finkel (Richman)
     {key: 22, n: "Frances \"Fran\"", s: "F", p1: -1, p2: -28, ux:23, info: "Lives in Pennsylvania. B Dec 28 1940" },
@@ -272,14 +273,14 @@ var Finkels = [
     
     
     
-];
+    ];
     
     
     
     
     // PETERSONS
     
-var Petersons = [
+    var Petersons = [
     
     
     //Manthey
@@ -386,12 +387,13 @@ var Petersons = [
     
     
     
-];
+    ];
     
     
     
     // Others 
     
-var OTHERS = [];
+    var OTHERS = [
     
+    ];
     

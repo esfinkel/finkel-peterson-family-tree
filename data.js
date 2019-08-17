@@ -178,7 +178,7 @@ var Finkels = [
     { key: -3, n: "Isadore Reichman", s: "M", ux: -4, info: "Ize (Rochman?)\n\"born in 1845 in Ochumunn, Russia. He married in 1865 and died in 1890 and was a jeweler\" - fran" },
     { key: -4, n: "Dora (Sablinsky)", s: "M", p1: -5, p2: -6, ux: -3, info: "(Sabilinsky?)\nhad entered US by 1910 census; believed to have been \"the only individual from that generation on either side of the Finkel-Richman family\" to come to North America - Stuart Finkel" },
     { key: -5, n: "Goldie Kriv", s: "F", ux: -6, info: "1830-1895; probably born Ochumunn, Russia" },
-    { key: -6, n: "Mushie Sabilinsky", s: "M", ux: -5, info: "born 1829 - Ochumann, Russia" },
+    { key: -6, n: "Mushie Sablinsky", s: "M", ux: -5, info: "born 1829 - Ochumann, Russia" },
 
     { key: -8, n: "Ethel", s: "F", ux: -9, info: "(Anna Gvintz)\n1859-1899" },
     { key: -9, n: "Shumel Goodseit", s: "M", ux: -8, info: "(Gutzeit)\n1855-1893\na teacher; might have lived in Odessa, Russia" },

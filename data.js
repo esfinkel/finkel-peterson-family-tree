@@ -75,19 +75,19 @@ var Patyks = [
 
     // Czarnecki Family
 
-    {key: 16, n: "Gloria Czarnecki" , s: "F", p1: 17, p2: 18, ux: 19 },
+    {key: 16, n: "Gloria Czarnecki", s: "F", p1: 17, p2: 18, ux: 19 },
     {key: 54, n: "Diane", s: "F", p1: 17, p2: 18 },
     {key: 57, n: "Lois", s: "F", p1: 17, p2: 18 },
     {key: 58, n: "Susan", s: "F", p1: 17, p2: 18, ux: "58a" },
     {key: "58a", n: "Gary", s: "M", ux: 58 },
         {key: "58b", n: "Shannon", s: "F", p1: 58, p2: "58a" },
     {key: "58c", n: "Joe", s: "M", p1: 58, p2: "58a" },
-    {key: 17, n: "Stella Smerlinsky" , s: "F", ux: 18 },
-    {key: 18, n: "Julian" , s: "M", ux: 17 },
+    {key: 17, n: "Stella Smerlinsky", s: "F", ux: 18 },
+    {key: 18, n: "Julian", s: "M", ux: 17 },
 
     // Patyk Family
 
-    {key: 19, n: "Gary" , s: "M", p1: 20, p2: 21, ux: 16 },
+    {key: 19, n: "Gary", s: "M", p1: 20, p2: 21, ux: 16 },
     {key: 59, n: "Gregory", s: "M", p1: 20, p2: 21, ux: "59a" },
         {key: "59a", n: "Donna LeDoux", s: "F", ux: 59 }, 
         {key: "59b", n: "Sean", s: "M", p1: 59, p2: "59a", ux: "59ba" },
@@ -173,7 +173,7 @@ var Finkels = [
     // Richman family
 
     { key: -1, n: "Samuel Richman", s: "M", p1: -2, p2: -7, ux: -28, info: "originally Reichman; legally changed name in 1929.\nhe was an \"upholder\"." },
-    { key: -2, n: "Louis Richman", s: "M", p1: -3, p2: -4, ux: -7, info: "Louis/Lewis; originally \"Abram Reichman.\"\n\"born in 1887 in Akkerman, (Ackamann) Russia , came to America on a ship called \"Haverford\" from Bremen , Germany in 1906\" - Fran Finkel\nProbably spoke Yiddish; probably emigrated because of pogroms.\nHad changed name by 1910" },
+    { key: -2, n: "Louis Richman", s: "M", p1: -3, p2: -4, ux: -7, info: "Louis/Lewis; originally \"Abram Reichman.\"\n\"born in 1887 in Akkerman, (Ackamann) Russia, came to America on a ship called \"Haverford\" from Bremen, Germany in 1906\" - Fran Finkel\nProbably spoke Yiddish; probably emigrated because of pogroms.\nHad changed name by 1910." },
     { key: -7, n: "Sara(h)", s: "F", p1: -8, p2: -9, ux: -2, info: "Probably spoke Yiddish; probably emigrated 1900-1908 because of pogroms" },
     { key: -3, n: "Isadore Reichman", s: "M", ux: -4, info: "Ize (Rochman?)\n\"born in 1845 in Ochumunn, Russia. He married in 1865 and died in 1890 and was a jeweler\" - fran" },
     { key: -4, n: "Dora (Sablinsky)", s: "M", p1: -5, p2: -6, ux: -3, info: "(Sabilinsky?)\nhad entered US by 1910 census; believed to have been \"the only individual from that generation on either side of the Finkel-Richman family\" to come to North America - Stuart Finkel" },
@@ -348,7 +348,7 @@ var Petersons = [
         { key: "-51u", n: "Anna", s: "F", p1: -52, p2: -53, info: "one of the oldest siblings" },
         { key: "-51v", n: "Stella", s: "F", p1: -52, p2: -53, ux: "-51vs", info: "30 years older than sister Rosalie" },
         { key: "-51vs", n: "", s: "M", ux: "-51v" },
-        { key: "-51va", n: "\"Whitey\"", s: "M", p1: "-51v", p2: "-51vs", info: "nickname \"Whitey\". Real name unknown.\nServed on some battleship; it sunk but he was ok" },
+        { key: "-51va", n: "\"Whitey\"", s: "M", p1: "-51v", p2: "-51vs", info: "nickname \"Whitey\". Real name unknown.\nServed on some battleship; it sank but he was ok" },
         { key: "-51vb", n: "two daughters", s: "F", p1: "-51v", p2: "-51vs" },
         { key: "-51w", n: "Florence", s: "F", p1: -52, p2: -53 },
         { key: "-51x", n: "Victoria", s: "F", p1: -52, p2: -53, ux:"-51xs" },

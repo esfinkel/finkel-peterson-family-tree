@@ -196,7 +196,8 @@ var Finkels = [
         { key: "-12b", n: "Devorah", s: "F", p1: -12, p2: "-12c" },
     { key: -13, n: "Martin", s: "M", p1: -2, p2: -7, ux: "-13c" },
         { key: "-13c", n: "Mildren", s: "F", ux: -13 },
-        { key: "-13a", n: "Andy", s: "M", p1: -13, p2: "-13c" },
+        { key: "-13a", n: "Andy", s: "M", p1: -13, p2: "-13c", ux: "-13as" },
+            { key: "-13as", n: "Peggy", s: "F", ux: "-13a" },
         { key: "-13b", n: "Sharon", s: "F", p1: -13, p2: "-13c", info: "\"Cousin Sharon\"" },
 
     { key: -18, n: "Israel", s: "M", p1: -3, p2: -4, ux: "-18s", info: "had entered US by 1910 census" },

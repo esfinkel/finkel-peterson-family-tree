@@ -151,7 +151,7 @@ var Finkels = [
     { key: 43, n: "Becky", s: "F", ux: 42 },
         { key: "42a", n: "Jill", s: "F", p1: 42, p2: 43 },
         { key: "42b", n: "Robin", s: "F", p1: 42, p2: 43 },
-    { key: 44, n: "Alyssa", s: "F", p1: 40, p2: 41, ux: "45a" },
+    { key: 44, n: "Alissa", s: "F", p1: 40, p2: 41, ux: "45a" },
     { key: 45, n: "Thomas", s: "M", p1: 44, p2: "45a" },
     { key: "45a", n: "", s: "M", ux: 44 },
 

@@ -9,13 +9,13 @@ marriagesInfo = [
     {sA: 36, sB: 47, info: "Max and Yetta moved to US before 1904; lived in Canada and Brooklyn at some point. separated at some point before 1940"},
     {sA: -6, sB: -7, info: "\"Louis and Sara married in Philadelphia 1910?\" -FF" },
     { sA: "-36bb", sB: "-36bbs", info: "Either Lillian was born in 1935, or they married then" },
-    { sA: -29, sB: -30, info: "\"According to family lore, Esther and Joseph were married at 16 and left their homes and families to come to America, we think they boarded a ship in England but don't know how they got there. Other members of their family were reported to have gone to Chicago and South Africa.\" -Fran Finkel" },
+    { sA: -29, sB: -30, info: "Came here in 1906.\n\"According to family lore, Esther and Joseph were married at 16 and left their homes and families to come to America, we think they boarded a ship in England but don't know how they got there. Other members of their family were reported to have gone to Chicago and South Africa.\" -Fran Finkel" },
     {sA: -1, sB: -28, info: "married on March 11 1936"},
     {sA: -34, sB: -35, info: "married and came to the US in 1906"},
     { sA: -51, sB: -54, info: "Their marriage caused some conflict in her family because he was protestant and she catholic.\n\nWent to a cottage in Indiana in the summers in the (19)50s or so" },
     { sA: -52, sB: -53, info: "Their marriage was arranged, - set up by Catherine's mother. They moved to the US at some point after marrying." },
 
- ]; 
+];
  
  
 
@@ -242,8 +242,8 @@ var Finkels = [
     { key: "-31s", n: "", s: "F", ux: -31 }, // anon
         { key: "-31b", n: "Jake", s: "M", p1: -31, p2: "-31s" },
     { key: -32, n: "Harry", s: "M",  p1: "?1a", p2: "?1b" },
-    { key: -29, n: "Joseph Shur", s: "M", p1: "?1a", p2: "?1b", ux: -30, info: "b 1884 in the Pale. Probably spoke Yiddish; emigrated in early 20th century because of pogroms, between 1900-1908 probably.\n\n\"According to family lore, Esther and Joseph were married at 16 and left their homes and families to come to America, we think they boarded a ship in England but don't know how they got there. Other members of their family were reported to have gone to Chicago and South Africa.\" -Fran Finkel" },
-    { key: -30, n: "Esther", s: "F", ux: -29, info: "b 1886 in the Pale. Probably spoke Yiddish; emigrated in early 20th century because of pogroms, between 1900-1908 probably.\n\n\"According to family lore, Esther and Joseph were married at 16 and left their homes and families to come to America, we think they boarded a ship in England but don't know how they got there. Other members of their family were reported to have gone to Chicago and South Africa.\" -Fran Finkel" },
+    { key: -29, n: "Joseph Mordechai Shur", s: "M", p1: "?1a", p2: "?1b", ux: -30, info: "b 110/25/1883 in Chveidan (Kvedarna) Lithuania (in the Pale). Probably spoke Yiddish; emigrated in 1906 because of pogroms.\n\n\"According to family lore, Esther and Joseph were married at 16 and left their homes and families to come to America, we think they boarded a ship in England but don't know how they got there. Other members of their family were reported to have gone to Chicago and South Africa.\" -Fran Finkel" },
+    { key: -30, n: "Esther (Shibel)", s: "F", ux: -29, info: "1883-1975. Born in Lithuania (in the Pale). Probably spoke Yiddish; emigrated in 1906 because of pogroms.\n\n\"According to family lore, Esther and Joseph were married at 16 and left their homes and families to come to America, we think they boarded a ship in England but don't know how they got there. Other members of their family were reported to have gone to Chicago and South Africa.\" -Fran Finkel" },
 
     { key: -28, n: "Pearl Shur", s: "F", p1: -29, p2: -30, ux: -1, info: "she was a clerk" },
     { key: "-28a", n: "Harry", s: "M", p1: -29, p2: -30, ux: "-28as" },

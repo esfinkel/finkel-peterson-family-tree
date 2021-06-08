@@ -15,30 +15,84 @@ function GetURLParameter(sParam) {
   }
 }
 
+function findAllSpouses(familyInfo, p) {
+  return familyInfo.filter(d => d.ux==p.key || d.key==p.ux);
+}
+
+// globals to hold state. this makes me vaguely uneasy, but we'll see
+var hideOldMembers = false;
+var globalFam = "all";
+var considerFamilyParam = true; // only on the first load should param be considered
+
+function toggleHidePast() {
+    hideOldMembers = !hideOldMembers;
+    if (hideOldMembers) {
+      document.getElementById("hidePast").textContent="Show distant past";
+    } else {
+      document.getElementById("hidePast").textContent="Hide distant past";
+    }
+}
+
+function isOld(familyInfo, member) {
+  /* Return true if (birth year < cutoff OR couldn't find birth year) AND no spouse is young.
+  So if someone is "old" but a spouse isn't, we should display both people.
   
-function init(fam=null, firsttime=true) {
+  One issue - if A married B, and both are old, but A also married C, and C is young, then B will
+  not be displayed; a recursive solution would fix this, but I don't think it's worthwhile.
+  */
+  let year_re = /[1-2](0|[6-9])\d\d/ // it's a year if it's 16xx-19xx or 20xx
+                // or could do something elaborate like (^|\D|\s)([1-2](0|[6-9])\d\d)($|\D|\s)
+  function birthYear(member) {
+    if (member.info === "" || member.info == null) {
+      return 0;
+    }
+    var year_field = member.info.match(year_re);
+    if (year_field == null || year_field.length <= 1) {
+      return 0;
+    }
+    var year = parseInt(year_field[0]); // Finds first match. [0] is full match, [1] is single-digit capture group
+    if (year < 2100 && year > 1599) {
+      return year;
+    }
+    return 0;
+  }
 
-  // instructions
+  const CUTOFF = 1880; // birth year cutoff
+  var year = birthYear(member);
+  if (year === 0 || year >= CUTOFF) return false; // person is recent (or couldn't find birth year)
+  // also not old if any spouse is recent (or year unknown)
+  spouseYears = findAllSpouses(familyInfo, member).map(m => birthYear(m));
+  if (spouseYears.length === 0) return true;
+  return ! spouseYears.some(y => { // return false if any spouses recent; true otherwise
+    return y === 0 || year >= CUTOFF;
+  })
+}
 
-  // if (GetURLParameter('info')=='true' || GetURLParameter('info')=='yes') {
-  //     setTimeout(function() { alert(    // asynchronous?
-  //         "INSTRUCTIONS:" + "\n" +
-  //         "Click on a name or marriage link to see extra info." + "\n" + 
-  //         "(Light blue people and red marriages have extra info.)" + "\n" +
-  //         "For a married couple, click on one member's '-' sign to see only their side of the family." + "\n" + 
-  //         "Drag and drop family members. Scroll and zoom normally."
-  //     ); }, 1); // 1 ms
-  // }
+
+function init(family=null) { // family input is deprecated
 
   // specify a family
 
-  if (fam==null) fam = GetURLParameter('family');
-  switch(fam) {
+  if (considerFamilyParam) {
+    var urlParam = GetURLParameter('family');
+    if (urlParam != null && urlParam !== "") {
+      globalFam = urlParam;
+    }
+    considerFamilyParam = false;
+  }
+  
+  switch(globalFam) {
     case 'finkel': var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels); document.getElementById("current-family-name").textContent='Finkels'; break;
     case 'patyk': var familyInfo = PatykFinkels.concat(Patyks); document.getElementById("current-family-name").textContent='Patyks'; break;
     case 'peterson': var familyInfo = FinkelPetersons.concat(Petersons); document.getElementById("current-family-name").textContent='Petersons'; break;
     default: var familyInfo = PatykFinkels.concat(FinkelPetersons).concat(Finkels).concat(Patyks).concat(Petersons); document.getElementById("current-family-name").textContent='All'; break;
   };
+
+  if (hideOldMembers) {
+    familyInfo = familyInfo.filter(m => {
+      return ! isOld(familyInfo, m);
+    });
+  }
 
     // make diagram
 
@@ -58,7 +112,7 @@ function init(fam=null, firsttime=true) {
   });
     
     
-  // displace user info
+  // display user info
   
   function showMessage(h, m, url=[]) {
     document.getElementById("diagramEventsMsgHeader").innerText = h;
@@ -151,13 +205,6 @@ function init(fam=null, firsttime=true) {
   // if p is visible and p is not start:
   // collapse(p)
 
-  function findAllSpouses(p) {
-    return familyInfo.filter(d => d.ux==p.key || d.key==p.ux);
-  }
-
-  // function findAllSpousesKey(p_key) {
-  //   return findAllSpouses(getNode(p_key));
-  // }
 
   function findAllChildren(p) {
     return familyInfo.filter(d => d.p1==p.key || d.p2==p.key);
@@ -189,7 +236,7 @@ function init(fam=null, firsttime=true) {
         // var opos = node.diagram.transformDocToView(node.getDocumentPoint(go.Spot.Center));
     }
     var thisNodeData = node.data;
-    var x = findAllSpouses(thisNodeData);
+    var x = findAllSpouses(familyInfo, thisNodeData);
     var y = findAllChildren(thisNodeData);
     var z = [];
     if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
@@ -213,7 +260,7 @@ function init(fam=null, firsttime=true) {
         node.diagram.model.setDataProperty(node.data, "visible", true);
     }
     var thisNodeData = node.data;
-    var x = findAllSpouses(thisNodeData);
+    var x = findAllSpouses(familyInfo, thisNodeData);
     var y = findAllChildren(thisNodeData);
     var z = [];
     if (node !== start && thisNodeData.hasOwnProperty('p1')) {z.push(thisNodeData.p1); z.push(thisNodeData.p2);}
@@ -440,9 +487,9 @@ function init(fam=null, firsttime=true) {
           p1 = data.m;
           p2 = data.f;
       }
-      if (p1 !== undefined && p2 !== undefined) {
+      if (p1 != undefined && p2 != undefined) {
         var link = findMarriage(diagram, p1, p2);
-        if (link === null) {
+        if (link == null) {
           // or warn no known mother or no known father or no known marriage between them
           if (window.console) window.console.log("unknown marriage: " + p1 + " & " + p2);
           continue;
@@ -491,6 +538,7 @@ function init(fam=null, firsttime=true) {
         var link = node.labeledLink;
         var spouseA = link.fromNode;
         var spouseB = link.toNode;
+        if (spouseA == null || spouseB == null) continue;
         // create vertex representing both husband and wife
         var vertex = net.addNode(node);
         // now define the vertex size to be big enough to hold both spouses
@@ -698,7 +746,7 @@ function init(fam=null, firsttime=true) {
     myDiagram.zoomslider.remove();
     myDiagram.div = null;
     myDiagram = null;
-    init(family, firsttime=false);
+    init(family=null); // family input no longer used
   }
   // end GenogramLayout class
 

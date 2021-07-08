@@ -72,7 +72,7 @@ var Patyks = [
 
     { key: 10, n: "Addie", s: "F", p1: 11, p2: 12, info: "Lives in Wisconsin" },
     { key: 11, n: "Laura", s: "F", p1: 16, p2: 19, ux: 12, info: "Live in Wisconsin" },
-    { key: 12, n: "Jay Anders", s: "M", ux: 11, info: "Lives in Wisconsin, works at Miller Beerl" },
+    { key: 12, n: "Jay Anders", s: "M", ux: 11, info: "Lives in Wisconsin" },
     { key: 13, n: "Braden", s: "M", p1: 11, p2: 12, info: "Lives in  Wisconsin" },
     { key: 14, n: "Drew", s: "M", p1: 11, p2: 12, info: "Lives in Wisconsin" },
 

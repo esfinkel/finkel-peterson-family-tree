@@ -207,7 +207,7 @@ function init(family=null) { // family input is deprecated
 
 
   function findAllChildren(p) {
-    return familyInfo.filter(d => d.p1==p.key || d.p2==p.key);
+    return familyInfo.filter(d => d.p1===p.key || d.p2===p.key);
   }
 
   // function aHasSpouseb(a, b) {
@@ -364,7 +364,7 @@ function init(family=null) { // family input is deprecated
         $(go.Shape, { strokeWidth: 2 })
       );
               var marriageWithInfo = "red";
-              var marriageWithoutInfo = "blue";
+              var marriageWithoutInfo = "black";
     myDiagram.linkTemplateMap.add("Marriage",  // for marriage relationships
       $(go.Link,
         {

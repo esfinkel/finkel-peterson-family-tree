@@ -2,7 +2,7 @@ marriagesInfo = [
     {sA: 38, sB: -33, info: "Samuel's first marriage. married 1935."},
     {sA: 38, sB: 39, info: "Samuel's second marriage"},
     {sA: 38, sB: 46, info: "Samuel's third marriage"},
-    {sA: "47b", sB: "47ba", info: "Ethel's first marriage"},
+    {sA: "47b", sB: "47ba", info: "Ethel's first marriage. There's a record for a Philadelphia marriage between some Ethel Finkel and Lewis Brandow in 1930."},
     {sA: "47b", sB: "47bb", info: "Ethel's second marriage"},
     {sA: 6, sB: 7, info: "m. Aug 28 1994"},
     {sA: -5, sB: -6, info: "m 1845"},
@@ -112,7 +112,7 @@ var Finkels = [
 
     // Finkel (Richman)
     {key: 22, n: "Frances \"Fran\"", s: "F", p1: -1, p2: -28, ux:23, info: "Lives in Pennsylvania. B Dec. 1940" },
-    {key: 23, n: "Lawrence \"Larry\" Finkel", s: "M", p1: 38, p2: -33, ux: 22, info: "Born 1936" },
+    {key: 23, n: "Lawrence \"Larry\" Finkel", s: "M", p1: 38, p2: -33, ux: 22, info: "1936-2015, in Pennsylvania." },
 
 
 
@@ -133,21 +133,94 @@ var Finkels = [
     { key: "37s", n: "Tia", s: "F", ux: 37 },
 
 
-    // Finkel - TODO ancestry lookup
+    // Finkel
 
-    { key: 38, n: "Samuel Finkel", s: "M", p1: 47, p2: 36 },
-    { key: 39, n: "Cele Shulman", s: "F", ux: 38 },
-    { key: 46, n: "Evelyn Kabatznick", s: "F", ux: 38 },
-    { key: 47, n: "Max Finkel", s: "M", ux: 36, info: "born March 15, 1883 in \"in a town called Proskurov (since renamed Khmelnytskyi) _near_ the then larger town of Kamianets-Podilskyi,\" Russia (now in Ukraine) - Stuart Finkel.\nlisted as Mickel/Mikhel on the manifest of the Furnessia.\nProbably spoke Yiddish. Probably emigrated because of pogroms.\nWent to Glasgow, Scotland, then to Ellis Island in 1902. Lived in Brooklyn and Montreal, and probably philly.\nmade mattress springs for \"Goodman Bros\"" },
+    // 1920: born ~1909 in PA.
+    // 1930: Birthplace listed as NY. Doing clerical work for a newspaper.
+    // almost certainly not him, but I found a yearbook entry from Temple University, 1931 - a Marshall of Phi Beta Delta.
+    // Married Ms. Slotkin in 1935 in Philadelphia.
+    // 1940: Finished high school but no college. Born in NY. Worked 40 hours weeks as a custom *** clerk.
+    // 1940 draft card: Born Sep 11 1908 in Brooklyn NY. Lived at 1804 S. 6th st Philly. Currently married to Edythe. Working at US Customs Service. Normal build, blue eyes, brown hair, dark complexion.
+            // 1941 - moved to 1225 Magee Ave. Lived there in 1950.
+    // In 1955, Edythe died. He later married Cele; she died/divorced; he later married Evelyn. They were married until his death.
+    // cemetary: Born 11 Sep 1908, died 27 Oct 2001. Buried in Har Nebo Cemetary. Shiva was observed at his son Larry's house.
+    // At his death he was, apparently, a resident of Bradenton, Manatee County, Florida (or had been recently); still considered a Pennsylvanian.
+    { key: 38, n: "Samuel Finkel", s: "M", p1: 47, p2: 36, info: "He was born Sep 11 1908 in Brooklyn, NY (although in one place it says PA). He had a normal build, blue eyes, brown hair, dark complexion. He finished high school. At 21, he was doing clerical work for a newspaper. He married Edythe Slotkin in 1935 in Philadelphia, where the couple then lived. He worked as a clerk for US Customs Office. In 1955, Edythe died. He later married Cele; she died/divorced; he later married Evelyn. They were married until his death on 27 Oct 2001. He was buried in Har Nebo Cemetary; shiva was observed at his son Larry's house. At his death he was, apparently, a resident of Bradenton, Manatee County, Florida (or had been recently); but was still considered a Pennsylvanian."},
+
+    // I'm not sure if it's her, but a Cecile Finkel was born in PA 8/11/1909, was married to a Samuel and living at 2101 Glendale Ave Philadelphia, and died 6/6/1968 of colon cancer. She was buried at Mt. Lebanon Cem.
+    // A Cecile Finkel was born 11 Aug 1909 and died June 1961 in PA
+    // A celia Shulman was born 5 Feb 1905 and died Oct 1987 in Philly
+    // A cecelia shulman was born 12 Apr 1912 and died 7 Aug 1989 in PA
+    // a Celia Shulman is buried in Har Nebo; 28 Dec 1909 - 1 Jun 2002
+    // A Celia Shulman died 28 Feb 1957 and was buried somewhere in Montgomery County, PA
+    // A Celia Shulman lived with her widowed mother Esther in Philadelphia. She was born in Russia around 1911; immigrated in 1914; was naturalized by 1930, speaking English and Yiddish; and worked as a baker (her mother then unemployed).
+    { key: 39, n: "Cele Shulman", s: "F", ux: 38, info: "Married Samuel, and had a daughter Martha Brody (nee Shulman) from a prior partner. Shulman appears to be her maiden name.\n\nI've found records for various Cecile/Celia Finkel/Shulmans, and I'm not sure any of them is the same person. One Cecile Finkel was born in PA 8/11/1909, was married to a Samuel and living in Philadelphia, and died 6/6/1968 of colon cancer (which falls between Samuel's first and third wives); but it definitely could be a different woman." },
+
+    { key: 46, n: "Evelyn Kabatznick", s: "F", ux: 38, info: "Born Evelyn Levy on 16 Nov 1914 in Suffolk County MA. Parents were Bernard and Annie Levy. First married Leon Kabatznick in 1938, and had a son Jacob, who died before she did. They also had children Joyce Norrie and Janna Maes. Leon died in 1995. She married Samuel at some point after Leon. She owned and operated a dance studio and was a member of Adath Israel Synagogue. She died a widow in her home in Washington on May 25 2005; she was cremated in Sumner, WA." },
+
+    // 1905: Wrong person: Living in Neptune, NJ. Born 1883 in Russia. Single; immigrated ~1900. worked as a taylor. Illiterate but spoke English. 
+    // 1910: Listed as born in Russia. Married around 1909. In 1910, he spoke only Yiddish (was literate), lived in Manhattan with his wife, and worked as a \"paperbur\" (?) worker." (right person?)
+    // 1910: Born 1884 Russia; immigrated 1901; married Yetta ~1903; living in Brooklyn, Kings, NYC. Working as a spring maker. Solomon born NJ, Samuel born NY. 
+    // 1915: Born in Russia ~1882. Lived in Kings, NYC with his family; married to a Edith, with children Solomon (~1904), Sam (~1909 ish), Ethel (~1911). Edith isn't mentioned elsewhere! She was born in Russia ~1885. He's currently 33 and working at a bed spring factory.
+    // 1920: Born in Russia. Working as a spring maker at a spring factory. Rented a place at 2436 South Philip Street, Philadelphia. Spoke English.
+    // 1930: Renting a home - 343 Gladstone Street. Married around age 21. Not yet citizen. Working as an \"operator\" in the bedding industry.
+    // 1940: Lived with daughter Ethel and her husband Louis Brandow (and their son Jacko) at 1819 Sixth Street. Unclear if Yetta is dead or divorced. Worked as a spring maker at the bedding factory.
+    // 1942: 1628 N. 8th street. Born Camenetz, Russia. Contact is Mrs. Ethel Brandow, who lives nearby. Worked at Goodman Bros. Described as short, stocky, with brown eyes and a light complexion.
+            // 5'2; stocky; brown eyes, light complexion.
+    // 1943: Died 24 Mar 1943; correct birth year/place; unclear if same person.
+    { key: 47, n: "Max Finkel", s: "M", ux: 36, info: "born March 15, 1883 in \"in a town called Proskurov (since renamed Khmelnytskyi) _near_ the then larger town of Kamianets-Podilskyi,\" Russia (now in Ukraine) - Stuart Finkel.\nlisted as Mickel/Mikhel on the manifest of the Furnessia.\nProbably spoke Yiddish. \"Probably emigrated because of pogroms.\nWent to Glasgow, Scotland, then to Ellis Island in 1902. Lived in Brooklyn and Montreal, and probably philly.\"\n\nHe was stocky with brown eyes and a light complexion. He is variously listed as immigrating 1901-1905. He married Yetta in 1903; they lived in Brooklyn, NY. He worked as a spring maker at a spring factory. He had a few children.\n\nOne 1915 record had bedspring-maker Max Finkel married to an Edith (b. Russia 1885); unclear if it's a different Max, or a different wife, or a different name for Yetta.\n\nBy 1920 his family (including Yetta) was living in Philadelphia, and he was making springs for a mattres factory; he spoke English and was naturalized sometime between 1920 and 1930. In 1940 he was living with his daughter Ethel and her husband Louis Brandow (and their son Jacko). It's unclear what happened to Yetta. In 1942 he registered for the draft, listing his birthplace as Camenetz, Russia. He listed his contact as Ethel; he had moved out but still lived nearby. He made mattress springs for Goodman Bros.\n\nA man named Max Finkel died on 24 March 1943; some details are correct, but it's unclear if it's the same Max Finkel." },
+
+    // May or may not be right person. 1910: Born in austria around 1884. Immigrated around 1901. Married around 1909. In 1910, she lived in Manhattan with her husband and her niece Dora and spoke English and was literate.\n\nDora Fredman was born c. 1888 in Austria. She immigrated ~1904. In 1910, she was single and working as a \"ladies' waists forelady\". She spoke english and was literate ."
+    // 1910: born ~1886 in Russia; immigrated 1900; married 1903. Now living with her husband. Not literate.
+    // 1920: Born ~1885. 
+    // 1930: Born ~1886. Married around age 17. Immigrated ~1899. Not yet citizen.
+    { key: 36, n: "Yetta", s: "F", ux: 47, info: "Maiden name Horowitz. Born roughly 1885-1886 in Russia, probably \"a shtetl near Vilna\". Probably spoke Yiddish; wasn't literate. Probably migrated because of pogroms.\n\"Moved to US before 1904; lived in Brooklyn and Canada at some point.\" Immigration was roughly 1899-1900; married in 1903 and lived with husband. Wasn't yet a citizen in 1930." },
+
+    // 1915: born ~1904 in the US. Residing in Kings, NYC. 
+    // 1920: born ~1904 in PA
+    // 1930: Birthplace listed as NY (but NJ in one place). Working as a dry goods salesman.
+    { key: "47a", n: "Solomon", s: "M", p1: 47, p2: 36, info: "Born ~1904 in NY (or NJ in one place). Later lived with his family in Pennsylvania. Around age 26, he was working as a dry goods salesman." },
+    
+    // 1920: born ~1911 in PA.
+    // 1930: Birthplace listed as NY. Working as a helper in the printing industry.
+    // 1940: Living in Philadelphia with Louis, her son Jacko, and her father Max.
+    // her husband went abroad in WWII. Afterwards, in 1950, she is no longer living with him. She appears to have married David Trussell, her second husband, in 1947.
+    // an Ethel Trussell is buried in Har Nebo, who lived Dec 2 1910 - Nov 24 1974.
+    { key: "47b", n: "Ethel", s: "F", p1: 47, p2: 36, info: "Born ~1910, probably in NY. At age 20 she was living with her family in Philadelphia and working as a helper in the printing industry. In 1940 she was living in Philadelphia with her husband Louis, her son Jacko, and her father Max. Her husband went abroad to fight in WWII. She appears to have married David Trussell, her second husband, in 1947. An Ethel Trussell is buried in Har Nebo, who lived Dec 2 1910 - Nov 24 1974; probably the same one."},
+    
+    // Earlier: Born 15 Dec 1907 in Philadelphia. In 1930, he lived with his parents and siblings, and worked as a cutter of mens' clothes. His father, Gersh, had parents from Germany; his mother, Sophia, had parents from Russia; they themselves were from Pennsylvania.
+    // draft 1940: Born 13 Dec 1908 in Philadelphia. Worked at Barclay Shirt Co. Average build. Married to Ethel. Lived 1819 S 6th street.
+            // in 1941, moved from 6th street to 261 S. 11th street. In 1942, moved to 1005 Spruce St. By 1947, moved to 906 Pine St.
+    // 1950: Veteran - enlisted 1942, served in the Navy 1943-1945 (some of it actually abroad). Afterwards was compensated for his services; was living on Pine St. with some Bernice Brandow (wife?) and some 4-year-old Robert Brandow.
+    // Seems to have died in 1987
+    { key: "47ba", n: "Lou Brandow", s: "M", ux: "47b", info: "Born 1907-1908 in Philadelphia. In 1930, he lived with his parents and siblings, and worked as a cutter of mens' clothes. His father, Gersh, had parents from Germany; his mother, Sophia, had parents from Russia; the parents themselves were from Pennsylvania. Married Ethel by 1940. Worked for Barclay Shirt Co. He enlisted in 1942, and served in the Navy 1943-1945 (some of it actually abroad). Afterwards he was compensated for his services; he was living on Pine St. with some Bernice Brandow (wife? sister?) and some 4-year-old Robert Brandow. He appears to have died in 1987." },
+
+    // As far as I can tell, he was born David Goldstein - his parents are listed as Abram and Minnie Goldstein. They emigrated from Russia about a year before he was born. They, and David's older siblings, have Yiddish as their mother tongue.
+    // 1910: he was born around 1903 in PA and grew up in Philadelphia.
+    // 1920: He had at least 6 siblings. At 17, having completed 2 years of high school, he worked as a laborer in a shipyard; his father was a tailor.
+    // In 1926 in Philadelphia, David Goldstein married Rae Finkelstein (sometimes Ray?); he was 23, she was 21.
+    // 1930: She was a naturalized citizen from Russia. He found steady work as a plumber; they had at least two children, Flora born around 1927 and Ailene born around 1933.
+    // 1940: In 1940 they were still living in Philadelphia, and he was still working as a plumbing contractor. His name is now David Trussell; there's no mention of \"Goldstein\" umtil his parents are listed on his death certificate.
+                // 717 Snyder Avenue
+    // draft: David G Trussell. Registered 1940. Born June 2 1905 in Philadelphia. He had brown hair and eyes, with dark skin. He was never drafted.
+    // This is where it gets interesting. There's a divorce between a David G Trussell and a Rae Trussell in 1946 in Florida.
+    // And in July 1947 in Florida, there's a marriage record between a David Trussell and an Ethel Finkel in Florida in 1947. The records are not firmly linked to them.        //  David's copy: https://www.ancestrylibrary.com/imageviewer/collections/8784/images/FLMAR_0290-0033?treeid=&personid=&hintid=&queryId=e46c0aab2e71814aef52838f494b63b2&usePUB=true&_phsrc=nTv143&_phstart=successSource&usePUBJs=true&pId=1407850  Ethel's copy: https://www.ancestrylibrary.com/imageviewer/collections/8784/images/FLMAR_0283-0038?treeid=&personid=&hintid=&queryId=a7b8566ef5028597317d0874a8638ddd&usePUB=true&_phsrc=nTv163&_phstart=successSource&usePUBJs=true&pId=1378644   The certificate number and year are the same, so they're the same marriage
+    // In November 1947, they flew from Cuba back to Florida; maybe their honeymoon. They had addresses in Miami but were born Philadelphia (this is the detail that makes me think it's the right people).
+    // Died May 7 1965 in Pennsylvania. His death was from heart failure due to \"centralized atherosclerosis\". He was still married to Ethel when he died. 
+    // found a Har Nebo gravestone for a David G Trussell, June 2 1903 - May 7 1965
+    { key: "47bb", n: "David Trusell", s: "M", ux: "47b", info: "June 2 1905 in Philadelphia, and grew up there. Died 1965. \"owned a resort in Loon Lake, New York\"\n\n\n"
+        + "As far as I can tell, he was born David Goldstein - his parents are listed as Abram and Minnie Goldstein. They emigrated from Russia about a year before he was born. They, and David's older siblings, have Yiddish as their mother tongue."
+        + "He had brown hair and eyes, and \"dark\" skin. He had at least 6 siblings. At 17, having completed 2 years of high school, he was working as a laborer in a shipyard; his father was a tailor."
+        + "In 1926 in Philadelphia, David Goldstein married Rae Finkelstein (sometimes Ray?); he was 23, she was 21."
+        + "She was a naturalized citizen from Russia. He found steady work as a plumber (which he did for the rest of his life); they had at least two children, Flora born around 1927 and Ailene born around 1933."
+        + "In 1940 his name is suddenly David G. Trussell; there's no mention of \"Goldstein\" umtil his parents are listed on his death certificate."
+        + "He registered for the WWII draft but was never drafted."
+        + "\n\nThen in 1946 in Florida, there's a divorce between a David G Trussell and a Rae Trussell. And in July 1947 in Florida, there's a marriage record between a David Trussell and an Ethel Finkel. In November 1947, they flew from Cuba back to Florida; perhaps their honeymoon. They had addresses in Miami (the people listed were born Philadelphia, which is what makes me think the Floridians are the same as the Pennsylvanians). There's no mention of whether or not their children from their first marriages lived with them."
+        + "\n\nDavid died May 7 1965 in Pennsylvania, from heart failure due to \"centralized atherosclerosis\". He was still married to Ethel when he died. He was buried in Har Nebo Cemetery."
+    },
 
 
-
-    { key: 36, n: "Yetta", s: "F", ux: 47, info: "Maiden name Horowitz. Probably spoke Yiddish. Probably from (\"shtetl near\") Vilna. Probably migrated because of pogroms.\nMoved to US  before 1904; lived in Brooklyn and Canada at some point." },
-    { key: "47a", n: "Solomon?", s: "M", p1: 47, p2: 36 },
-    { key: "47b", n: "Ethel", s: "F", p1: 47, p2: 36 },
-    { key: "47ba", n: "Lou Brandow", s: "M", ux: "47b" },
-    { key: "47bb", n: "David Trusell", s: "M", ux: "47b", info: "owned a resort in Loon Lake, New York" },
-    { key: "47bc", n: "Jack", s: "M", p1: "47b", p2: "47bb" },
+    { key: "47bc", n: "Jack", s: "M", p1: "47b", p2: "47bb", info: "B. 14 May 1931 in Pennsylvania; was a veteran; died May 1994. I think Jack was actually Louis' son, since he was born in that time period, and he just took his stepfather's surname. In 1947, his name was listed as Jack Brandow; in 1949, it was Jack Brandow Trussell" },
 
     // Brody
 
@@ -165,13 +238,13 @@ var Finkels = [
 
     { key: 48, n: "Evelyn", s: "F", p1: -34, p2: -35, ux: 49 },
     { key: 49, n: "Jack Rosen", s: "M", ux: 48 },
-        { key: "48a", n: "Stanley", s: "M", p1: 48, p2: 49 },
-    { key: 50, n: "Sam", s: "M", p1: -34, p2: -35, ux: 51, info: "Samuel Slotkin. Possible: Born March 1917 in Philadelphia, still residing in Philadelphia; unemployed at age 28." },
+    { key: "48a", n: "Stanley", s: "M", p1: 48, p2: 49 },
+    { key: 50, n: "Sam", s: "M", p1: -34, p2: -35, ux: 51, info: "Samuel Slotkin. Possible: Born March 1917 in Philadelphia, continued residing in Philadelphia. Completed high school. Worked as a pawn shop clerk around age 23; unemployed around age 28." },
     { key: 51, n: "Pauline", s: "F", ux: 50 }, 
-        { key: "50a", n: "Barry", s: "M", p1: 50, p2: 51 },
-    { key: 52, n: "Marcia", s: "F", p1: -34, p2: -35, ux: 53 },
-    { key: 53, n: "Sam Skolnick", s: "M", ux: 52 },
-    { key: "52a", n: "Jay", s: "M", p1: 52, p2: 53 },
+    { key: "50a", n: "Barry", s: "M", p1: 50, p2: 51 },
+    { key: 52, n: "Marcia", s: "F", p1: -34, p2: -35, ux: 53, info: "Born ~1912 in PA; completed high school. In 1940, was a housewife; lived with her husband and son with her parents, in the parents' home." },
+    { key: 53, n: "Sam Skolnick", s: "M", ux: 52, info: "Samuel. Born ~1907 in Russia. Naturalized citizen. Completed 2 years of college, then worked full-time as a pharmacist at a drug store." },
+    { key: "52a", n: "Jay", s: "M", p1: 52, p2: 53, info: "Jay Morton Skolnick. Born ~1939 in PA." },
     { key: "52b", n: "Harriet", s: "F", p1: 52, p2: 53 },
 
 
@@ -293,7 +366,7 @@ var Finkels = [
         + "Died in Philadelphia on Dec 27 1966; residence was still in West Chester; had moved to 138 West Market Street. Death was reported by daughter Rose Olin, who didn't know his birth year or parents' names. Joseph died of heart failure related to diabetes. Buried in Mount Sharon cemetary, a Jewish cemetary - see https://www.findagrave.com/memorial/69089449/joseph-shur"
     },
     // nA Jewish Esther Shur (b. ~1884) came from Russia to Philadelphia (via Liverpool, England) on \"the Westernland\", arriving on 15 July 1906; but I don't think our Esther had changed her surname yet. And she was joining a husband \"Nathan\" so nvm.
-    { key: -30, n: "Esther (Shibel)", s: "F", ux: -29, info: "1883-1975. Born in Lithuania (in the Pale). Probably spoke Yiddish; emigrated in 1906 because of pogroms. Did not attend school, but was literate. Married in 1907. Naturalized in 1919. Died June 15 1975; buried with husband." },
+    { key: -30, n: "Esther (Shibel)", s: "F", ux: -29, info: "1883-1975. Born in Lithuania (in the Pale). Probably spoke Yiddish; emigrated in 1906 because of pogroms. Was literate. Married in 1907. Naturalized in 1919. Died June 15 1975; buried with husband." },
     { key: -28, n: "Pearl Shur", s: "F", p1: -29, p2: -30, ux: -1, info: "Born 1913-1914 in PA. Grew up at 137 East Market Street in Westchester PA. Her parents were listed as coming from Russia, then Lithuania. She graduated high school in 1930, then worked for a few years as a bookkeeper. Married by a rabbi to Sam Richman on 15 Mar 1936, still in Westchester PA; she worked as a clerk and he an upholder. Pearl appears to have died 9 Oct 1988 in Philadelphia.\nBonus: Photo at https://imgur.com/a/vjDT7yW" },
     { key: "-28a", n: "Harry", s: "M", p1: -29, p2: -30, ux: "-28as", info: "Born ~1911. At 19, worked as a clerk at \"Gas Co\". At 29, lived at home and worked as a census taker." },
     { key: "-28as", n: "Rose", s: "F", ux: "-28a" },
@@ -319,25 +392,17 @@ var Finkels = [
 
 
 
-    // Slotkin family - TODO transcribe
+    // Slotkin family
 
     { key: "?2a", n: "", s: "X", ux: "?2b", info: "Zlotkin family immigrated from Vitebsk in 1906" },
     { key: "?2b", n: "", s: "X", ux: "?2a", info: "Zlotkin family immigrated from Vitebsk in 1906" },
     { key: -33, n: "Edythe (Slotkin)", s: "F", p1: -34, p2: -35, ux: 38, info: "Born March 7 1913 in Philadelphia. Before her death, she lived at 1225 Magee Ave, Philadelphia. Worked as an office clerk. Died at age 42 on Oct 4 1955 in Philadelphia, at Hahnemann University Hospital, from \"hernia; chronic glomerulosclerosis\". She was buried at Har Nebo cemetary. She was survived by her husband Samuel." },
-    // David Slotkin. B. ~1881. Married ~1905. Immigrated 1909. Yiddish speaker. Literate; 8th-grade-level education. In 1910, worked as a \"fastner\" for houses; renting a place in Philadelphia. In 1940, owned a home at 425 Snyder Ave, Philadelphia; was a naturalized citizen; worked as a building plasterer. 
-    // Died 16 May 1953. Lived at 425 Snyder Ave, Philadelphia.
-    { key: -34, n: "David Slotkin", s: "M", p1: "?2a", p2: "?2b", ux: -35, info: "Originally Zlotkin; had changed by 1920. Probably spoke Yiddish and emigrated from Vitebsk because of pogroms. Married and came to the US in 1906." },
-    // Lea Slotkin. B. ~1881. Married ~1905. Immigrated 1909. Yiddish speaker. Literate; 6th-grade-level education. In 1960, was a naturalized citizen; housewife; claimed to be 2 years younger than husband; 
-    // Esther Slotkin. Born ~1906 in Russia; immigrated 1907.
-    // Samuel Slotkin. Born ~1917 in PA; completed high school. Worked as a pawn shop clerk in 1940. 
-    // Marcia Skolnick. Born ~1912 in PA; completed high school. In 1940, was a housewife; lived with her husband and son with her parents, in the parents' home. 
-    // SIL Samuel Skolnick. Born ~1907 in Russia. Naturalized citizen. Completed 2 years of college. Worked full-time as a pharmacist at a drug store.
-    // Grandson - Jay Morton Skolnick. Born ~1939 in PA. 
-    { key: -35, n: "Leah Pearlstein", s: "F", ux: -34, info: "\"probably born in Vitebsk. Probably spoke Yiddish and emigrated from Vitebsk because of pogroms. married and came here in 1906\" - fran" },
-    // Max Slotkin - Born April 15 1877 in Russia. Black hair, gray eyes. Married at age 25, ~1902. Immigrated in 1907. In 1918 he was working as a tailor. He was naturalized some time 1918-1930. In 1930 he owned a nice home on S. Duke Street in Lancaster, PA, and owned a clothing store. Their daughters Celia and Esther lived with them. Celia worked as a clerk in his clothing store; he may have had other employees. He appears to have died 3 Oct 1959 in Lancaster.
-    { key: "-36a", n: "Max", s: "M", p1: "?2a", p2: "?2b", ux: "-36as", info: "Born April 15 1877 in Russia. Black hair, gray eyes. Married at age 25, ~1902. Immigrated in 1907. In 1918 he was working as a tailor. He was naturalized some time 1918-1930. In 1930 he owned a nice home on S. Duke Street in Lancaster, PA, and owned a clothing store. Their daughters Celia and Esther lived with them. Celia worked as a clerk in his clothing store; he may have had other employees. He appears to have died 3 Oct 1959 in Lancaster." },
-    { key: "-36as", n: "Frieda", s: "F", ux: "-36a", info: "Born ~1879 in Russia. Immigrated in 1908 with Celia, and possibly other older children. Naturalized by 1930." },
-    { key: "-36ab", n: "Herman, Sam, Sol, Celia, Ester", s: "X", p1: "-36a", p2: "-36as", info: "Celia: born ~1907 in Russia, Esther: born ~1911 in PA. Esther attended school, Celia did not." },
+    { key: -34, n: "David Slotkin", s: "M", p1: "?2a", p2: "?2b", ux: -35, info: "David Zlotkin. B. ~1881. Married ~1906. Spoke and wrote Yiddish; 8th-grade-level education. Immigrated 1906 (s. family) or 1909 (s. census) from Vitebsk, probably because of pogroms. In 1910, worked in Philadelphia as a \"fastner\" for houses. Had changed Slotkin spelling by 1920. In 1940, owned a home at 425 Snyder Ave, Philadelphia; was a naturalized citizen; worked as a building plasterer. Died 16 May 1953." },
+    { key: -35, n: "Leah Pearlstein", s: "F", ux: -34, info: "or Lea Slotkin. \"Probably born in Vitebsk\" around 1881 (1888?). Married ~1905. Spoke and wrote Yiddish; 6th-grade-level education. Immigrated 1906 (s. family) or 1909 (s. census), probably because of pogroms. At one point claimed to be two years younger than husband. Was a housewife; and a naturalized citizen by 1960." },
+    { key: "-34a", n: "Esther Slotkin", s: "F", p1: -34, p2: -35, info: "Born in Russia ~1906, immigrated ~1907. Their oldest child." },
+    { key: "-36a", n: "Max Slotkin", s: "M", p1: "?2a", p2: "?2b", ux: "-36as", info: "Born April 15 1877 in Russia. Black hair, gray eyes. Illiterate. Spoke \"Russian\" (maybe also Yiddish?), and English by 1920. Married at age 25, ~1902. Immigrated in 1905. Naturalized 1917 with his family. In 1918 he was working as a tailor. In 1930 he owned a nice home on S. Duke Street in Lancaster, PA, and owned a clothing store. Their daughters Celia and Esther lived with them. Celia worked as a clerk in his clothing store; he may have had other employees. He appears to have died 3 Oct 1959 in Lancaster." },
+    { key: "-36as", n: "Frieda", s: "F", ux: "-36a", info: "or Freda. Born ~1879 in Russia. Semi-literate. Spoke \"Russian\" (maybe also Yiddish?), and English by 1920. Immigrated in 1907-1908 with Celia, and possibly with the other older children. Naturalized in 1917 with her family." },
+    { key: "-36ab", n: "Herman, Sam, Sol, Celia, Ester", s: "X", p1: "-36a", p2: "-36as", info: "Herman: born ~1899 in Russia\nSamuel: born ~1902 in Russia\nCelia: born 1905-7 in Russia\nSolomon: born ~1907 in PA\nEsther: born ~1911 in PA.\nOne interesting observation is that in 1920, Celia (age 15) is not attending school, but her brothers (age 13, 18, 21) all are. In 1930, her sister Esther (age 19) is attending school (Celia is working for her father), so maybe the parents had some philosophical changes, or maybe Celia was a sickly child or something." },
     { key: "-36b", n: "Cy", s: "M", p1: "?2a", p2: "?2b", ux: "-36bs" },
         { key: "-36bs", n: "", s: "F", ux: "-36b" }, // anon
     { key: "-36bb", n: "Lillian", s: "F", p1: "-36b", p2: "-36bs", ux: "-36bbs", info: "Either Lillian was born in 1935, or they married then" },
@@ -373,7 +438,7 @@ var Petersons = [
     { key: 28,  n: "Rosalind", s: "F", p1: -51, p2: -54, ux: 29, info: "or \"sis\". born in Muncie, Indiana in Oct 1939. Lives in Illinois. " },
 
 
-    { key: 29, n: "Dave Sr.", s: "M", p1: -37, p2: -38, ux: 28, info: "Lived in Illinois" },
+    { key: 29, n: "Dave Sr.", s: "M", p1: -37, p2: -38, ux: 28, info: "Lived in Illinois. June 1939 - Dec 2018. \"An ex-Marine, he worked as a printer and mortgage broker\"" },
 
 
 
@@ -382,9 +447,9 @@ var Petersons = [
         { key: "-37p1", n: "Charles Peterson", s: "M", p1: "-37p1p1", p2: "-37p1p2", ux: "-37p2", info: "Born 10 Sep 1881 in St Paul, MN. Worked as a coal miner in Ross, Kansas (c. 1910); had a house mortgaged. Had an older child named Manda. In 1920, lived in Davenport Iowa and worked as a laborer for 'Arsenal'; had several boarders. After having a brain tumor for 2 years, died 6 Jan 1921 in Iowa." },
             { key: "-37p1p1", n: "Truls Peterson", s: "M", ux: "-37p1p2", info: "Truls or Truliss. Born 1849 in Sweden. May have been in MN in 1862 through the 70s. In 1870, had 34 acres of \"improved (farmable)\" land, and a relative Bettsie Peterson (sister? wife?) who was 10 years younger. Lived in Orleans, Nebraska in 1880, listed as a \"laborer\"." },
             { key: "-37p1p2", n: "", s: "F", ux: "-37p1p1", info: "Also born in Sweden. A Charles Peterson in MN had a mother named Cary, but she (and unnamed husband) were born in Denmark, not Sweden, so it's probably a different Charles?" }, // anon
-        { key: "-37p2", n: "Sarah (Morgan)", s: "F", p1: "-37M-A", p2: "-37M-B", ux: "-37p1", info: "Sarah J. Morgan (went by Sadie). Born 20 May 1874 in IL (possibly in Streator/Streeter); by 1880, was in Pleasant view, Kansas. She attended school; her parents hadn't (but could read/write). In March 1892, about to turn 18 (although she told the judge she was already 18), she married a John Burch in Cherokee, Kansas. Around 1895, she married a Charles Griffin, a house painter from IL; they had a rented dwelling in Kansas and 2+ children (Mary Birch and Paul Griffin; Mary was presumably John Burch's daughter). They were still married in 1905, with additional children Lasy, Pearl, Earl (I think those are the names; it's hard to read). She married Charles Peterson around 1907 (possible Sep 1907 in Lamar, Missouri, if he went by 'Chas'). In 1915, she lived in Kansas with C.P. and several children. In 1920, they lived in Iowa (although spelled Peterson), and some of the Griffin children lived with her in addition to her children with CP. Her husband CP died in 1921, and she married a man named Patrick Mullen at some point thereafter. She died 13 Nov 1946 in Chicago, IL, and was buried in Worth, IL.\n\nOther info says she and Charles Peterson were buried in Kansas together, but the death dates are different than I've seen elsewhere, so it might be different people. This info lists them as living in Kansas until 1948 and dying shortly thereafter; the man is listed as being an engineer." },
-            { key: "-37M-A", n: "Phoebe (Kyser)", s: "F", ux: "-37M-B", p1: "-37M-C", p2: "-37M-D", info: "10 June 1843, PA - 5 Dec 1915, Cherokee, KA\nDid not attend school. Possibly a Quaker. Apparently spoke Dutch. By 1910 (age 66), had had 8 children, 5 of whom were still living.\nIn 1910 she seems to claim here parents were both born in Germany; maybe a different Phebe?" },
-            { key: "-37M-B", n: "William Morgan", s: "M", ux: "-37M-A", p1: "-37M-E", p2: "-37M-F", info: "18 Aug 1838, East Bethlehem, PA - 20 Feb 1918, Weir, Kansas\nDid not attend school. Married Phobe in June 1862 in Ancone, IL. First child Laura born in IL ~1863. Farmer in Missouri in 1870. Were in Iowa ~1877. Farmer in Cherokee, Kansas in 1880. Unemployed coal miner there in 1900; full homeowner." },
+        { key: "-37p2", n: "Sarah (Morgan)", s: "F", p1: "-37M-A", p2: "-37M-B", ux: "-37p1", info: "Sarah J. Morgan (went by Sadie). Born 20 May 1874 in IL (possibly in Streator/Streeter); by 1880, was in Pleasant view, Kansas. She attended school. In March 1892, about to turn 18 (although she told the judge she was already 18), she married a John Burch in Cherokee, Kansas. Around 1895, she married a Charles Griffin, a house painter from IL; they had a rented dwelling in Kansas and 2+ children (Mary Birch and Paul Griffin; Mary was presumably John Burch's daughter). They were still married in 1905, with additional children Lasy, Pearl, Earl (I think those are the names; it's hard to read). She married Charles Peterson around 1907 (possible Sep 1907 in Lamar, Missouri, if he went by 'Chas'). In 1915, she lived in Kansas with C.P. and several children. In 1920, they lived in Iowa (although spelled Peterson), and some of the Griffin children lived with her in addition to her children with CP. Her husband CP died in 1921, and she married a man named Patrick Mullen at some point thereafter. She died 13 Nov 1946 in Chicago, IL, and was buried in Worth, IL.\n\nOther info says she and Charles Peterson were buried in Kansas together, but the death dates are different than I've seen elsewhere, so it might be different people. This info lists them as living in Kansas until 1948 and dying shortly thereafter; the man is listed as being an engineer." },
+            { key: "-37M-A", n: "Phoebe (Kyser)", s: "F", ux: "-37M-B", p1: "-37M-C", p2: "-37M-D", info: "10 June 1843, PA - 5 Dec 1915, Cherokee, KA\nWas not attending school at age 17; her older and younger brothers were. Possibly a Quaker. Apparently spoke Dutch. By 1910 (age 66), had had 8 children, 5 of whom were still living.\nIn 1910 she seems to claim her parents were both born in Germany; maybe a different Phebe?" },
+            { key: "-37M-B", n: "William Morgan", s: "M", ux: "-37M-A", p1: "-37M-E", p2: "-37M-F", info: "18 Aug 1838, East Bethlehem, PA - 20 Feb 1918, Weir, Kansas\nMarried Phobe in June 1862 in Ancone, IL. First child Laura born in IL ~1863. Farmer in Missouri in 1870. Were in Iowa ~1877. Farmer in Cherokee, Kansas in 1880. Unemployed coal miner there in 1900; full homeowner." },
             { key: "-37M-C", n: "Orin Kyser", s: "M", ux: "-37M-D", info: "Orin/Orrin Peter Kyser\nC. 1800 (maybe 1797), NY - 13 Nov 1876, Walnut Grove, KS\nMarried Phebe Ann in 1825, probably in NY. Moved to PA by 1828, then to IL later in life, then eventually to Kansas. Fertile from ages 28-54. In Kansas, at age 88, worked as a farmer, apparently is from PA?" },
             { key: "-37M-D", n: "Phebe (nee Hildreth)", s: "F", ux: "-37M-C", info: "Phebe Ann Kyser\n1810 Salisbury NY - 1880 Kansas\nHer parents were from NH\nAfter her husband's death, she lived with her (also widowed) daughter SA Root in Kansas on a farm" },
             { key: "-37M-E", n: "Andrew Morgan Jr", s: "M", ux: "-37M-F", p1: "-37M-G", p2: "-37M-H", info: "1814 Maryland - 1851 Iowa\nMay have lived in PA in the 1840s \nSomeone pasted a link to an article about an Andrew Morgan dying in a tornada in 1859 near Iowa City - however, both Andrew Morgans that I list died before then." },
